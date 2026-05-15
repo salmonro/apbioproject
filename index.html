@@ -157,13 +157,13 @@
       left: 0;
       width: 100%;
       height: 2px;
-      background: rgba(255, 143, 179, 0.6);
+      background: rgba(49, 204, 76, 0.6);
       border-radius: 1px;
       opacity: 0.6;
     }
 
     nav a {
-      color: #d47a9a;
+      color: #57c76a;
       font-size: 20px;
       text-decoration: none;
       font-weight: bold;
@@ -171,19 +171,7 @@
     }
 
     nav a:hover {
-      color: #c75c85;
-    }
-
-    /* DNA Canvas */
-    #dnaCanvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      pointer-events: none;
-      opacity: 0.35;
+      color: #39b54f;
     }
 
     /* Question Progress */
@@ -200,7 +188,7 @@
     .progress-bar {
       width: 0%;
       height: 10px;
-      background: linear-gradient(90deg, #ff8fb3, #ff5fa0);
+      background: linear-gradient(90deg, #7af587, #0edb22);
       transition: width 0.3s;
     }
 
@@ -233,100 +221,37 @@
   <canvas id="dnaCanvas"></canvas>
 
   <div class="hero">
-    <h1>Rosaceae Prep</h1>
-    <p class="subtitle">The ultimate biology resource for USABO and AP Biology.</p>
+    <h1>Bioluminescent Trees</h1>
+    <p class="subtitle">A captivating solution for artificial lights and energy waste.</p>
 
     <div class="buttons">
-      <a href="usabo.html" class="main-btn">Start USABO Practice</a>
-      <a href="apbio.html" class="secondary-btn">AP Bio Resources</a>
+      <a href="overview.html" class="main-btn">Overview</a>
+      <a href="projects.html" class="secondary-btn">Current and Past Projects</a>
     </div>
   </div>
 
   <div class="features">
     <div class="card">
-      <h2>USABO Questions</h2>
-      <p>Practice USABO-style questions covering all tested topics.</p>
+      <h2>Overview</h2>
+      <p>Bioluminescent plants: How are they engineered?</p>
     </div>
     <div class="card">
-      <h2>AP Bio Review</h2>
-      <p>Review key concepts and test yourself with questions by unit.</p>
+      <h2>Current and Past Projects</h2>
+      <p>Explore organizations and projects currently underway.</p>
     </div>
     <div class="card">
-      <h2>Study Guides</h2>
-      <p>Clear and concise explanations for both the USABO and the AP Biology test.</p>
+      <h2>Genes</h2>
+      <p>Genes of interest being researched for plant bioluminescence.</p>
     </div>
   </div>
 
   <nav>
     <ul>
-      <li><a href="usabo.html">USABO</a></li>
-      <li><a href="apbio.html">AP Bio</a></li>
-      <li><a href="studyguides.html">Study Guides</a></li>
-      <li><a href="discord.html">Join the Discord</a></li>
-      <li><a href="logs.html">Logs</a></li>
-      <li><a href="about.html">About</a></li>
+      <li><a href="overview.html">Overview</a></li>
+      <li><a href="projects.html">Current and Past Projects</a></li>
+      <li><a href="genes.html">Study Guides</a></li>
+      <li><a href="considerations.html">Considerations</a></li>
+      <li><a href="futuredirections.html">Future Directions</a></li>
+      <li><a href="research.html">Research</a></li>
     </ul>
   </nav>
-
-  <div class="progress-container">
-    <div class="progress-bar" id="progressBar"></div>
-    <div class="progress-text" id="progressText">0/0 questions of [Category] completed</div>
-  </div>
-
-  <script>
-    const canvas = document.getElementById("dnaCanvas");
-    const ctx = canvas.getContext("2d");
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-
-    resizeCanvas();
-    window.addEventListener("resize", resizeCanvas);
-
-    let t = 0;
-
-    function drawDNA() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      const centerX = canvas.width / 2;
-
-      for (let y = 0; y < canvas.height; y += 12) {
-        const x1 = centerX + Math.sin((y + t) / 60) * 120;
-        const x2 = centerX + Math.sin((y + t) / 60 + Math.PI) * 120;
-
-        ctx.beginPath();
-        ctx.arc(x1, y, 2, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(255,255,255,0.25)";
-        ctx.fill();
-
-        ctx.beginPath();
-        ctx.arc(x2, y, 2, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(255,255,255,0.25)";
-        ctx.fill();
-
-        ctx.beginPath();
-        ctx.moveTo(x1, y);
-        ctx.lineTo(x2, y);
-        ctx.strokeStyle = "rgba(255,255,255,0.08)";
-        ctx.stroke();
-      }
-
-      t += 2;
-      requestAnimationFrame(drawDNA);
-    }
-
-    drawDNA();
-
-    function updateProgress(completed, total, category) {
-      const bar = document.getElementById("progressBar");
-      const text = document.getElementById("progressText");
-      const percent = total === 0 ? 0 : (completed / total) * 100;
-      bar.style.width = percent + "%";
-      text.innerText = `${completed}/${total} questions of ${category} completed`;
-    }
-  </script>
-
-</body>
-
-</html>
