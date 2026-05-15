@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Bioluminescent Trees</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      font-family: 'Rubik', Arial, sans-serif;
+      text-align: center;
+      color: white;
+
+      /* Apple-style gradient base */
+      background: radial-gradient(circle at 20% 25%, #073806 0%, transparent 40%),
+                  radial-gradient(circle at 80% 75%, #1a2a4a 0%, transparent 45%),
+                  radial-gradient(circle at 50% 90%, #1c3b21 0%, transparent 40%),
+                  linear-gradient(180deg, #111321 0%, #0b0d18 100%);
+
+      min-height: 100vh;
+    }
+
+   h1 {
+      font-size: 70px;
+      margin-bottom: 10px;
+
+      background: linear-gradient(to right, #daffd6, #75ed69, #40c433);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      text-shadow:
+        0 0 8px rgba(55, 214, 88, 0.8),
+        0 0 18px rgba(55, 214, 88, 0.6),
+        0 0 32px rgba(55, 214, 88, 0.4);
+    }
+
+    .subtitle {
+      font-size: 22px;
+      color: #ccc;
+      margin-bottom: 40px;
+    }
+
+    .hero {
+      padding-top: 140px;
+      margin-bottom: 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Buttons */
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .main-btn {
+      background: #75ed69;
+      color: white;
+      padding: 14px 30px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 0 15px rgba(255, 143, 179, 0.6);
+      transition: all 0.3s;
+    }
+
+    .main-btn:hover {
+      background: #75ed69;
+      box-shadow: 0 0 25px rgba(255, 143, 179, 1);
+    }
+
+    .secondary-btn {
+      border: 2px solid #75ed69;
+      color: #75ed69;
+      padding: 12px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s;
+    }
+
+    .secondary-btn:hover {
+      background: #75ed69;
+      color: white;
+    }
+
+    /* Feature cards */
+    .features {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-bottom: 100px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card {
+      width: 260px;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      transition: all 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 0 25px rgba(255, 143, 179, 0.35);
+    }
+
+    .card h2 {
+      color: #75ed69;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #bbb;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    /* Navbar */
+    nav {
+      margin-top: 60px;
+      margin-bottom: 60px;
+      position: relative;
+      z-index: 1;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+      padding-bottom: 10px;
+    }
+
+    nav li {
+      position: relative;
+      padding: 0 10px;
+    }
+
+    nav li::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: rgba(255, 143, 179, 0.6);
+      border-radius: 1px;
+      opacity: 0.6;
+    }
+
+    nav a {
+      color: #d47a9a;
+      font-size: 20px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #c75c85;
+    }
+
+    /* DNA Canvas */
+    #dnaCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.35;
+    }
+
+    /* Question Progress */
+    .progress-container {
+      width: 300px;
+      margin: 20px auto;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      overflow: hidden;
+      position: relative;
+      z-index: 1;
+    }
+
+    .progress-bar {
+      width: 0%;
+      height: 10px;
+      background: linear-gradient(90deg, #ff8fb3, #ff5fa0);
+      transition: width 0.3s;
+    }
+
+    .progress-text {
+      color: #ccc;
+      font-size: 14px;
+      margin-top: 6px;
+    }
+
+    @media screen and (max-width: 768px) {
+      h1 {
+        font-size: 48px;
+      }
+
+      .features {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <canvas id="dnaCanvas"></canvas>
+
+  <div class="hero">
+    <h1>Rosaceae Prep</h1>
+    <p class="subtitle">The ultimate biology resource for USABO and AP Biology.</p>
+
+    <div class="buttons">
+      <a href="usabo.html" class="main-btn">Start USABO Practice</a>
+      <a href="apbio.html" class="secondary-btn">AP Bio Resources</a>
+    </div>
+  </div>
+
+  <div class="features">
+    <div class="card">
+      <h2>USABO Questions</h2>
+      <p>Practice USABO-style questions covering all tested topics.</p>
+    </div>
+    <div class="card">
+      <h2>AP Bio Review</h2>
+      <p>Review key concepts and test yourself with questions by unit.</p>
+    </div>
+    <div class="card">
+      <h2>Study Guides</h2>
+      <p>Clear and concise explanations for both the USABO and the AP Biology test.</p>
+    </div>
+  </div>
+
+  <nav>
+    <ul>
+      <li><a href="usabo.html">USABO</a></li>
+      <li><a href="apbio.html">AP Bio</a></li>
+      <li><a href="studyguides.html">Study Guides</a></li>
+      <li><a href="discord.html">Join the Discord</a></li>
+      <li><a href="logs.html">Logs</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+
+  <div class="progress-container">
+    <div class="progress-bar" id="progressBar"></div>
+    <div class="progress-text" id="progressText">0/0 questions of [Category] completed</div>
+  </div>
+
+  <script>
+    const canvas = document.getElementById("dnaCanvas");
+    const ctx = canvas.getContext("2d");
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas);
+
+    let t = 0;
+
+    function drawDNA() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const centerX = canvas.width / 2;
+
+      for (let y = 0; y < canvas.height; y += 12) {
+        const x1 = centerX + Math.sin((y + t) / 60) * 120;
+        const x2 = centerX + Math.sin((y + t) / 60 + Math.PI) * 120;
+
+        ctx.beginPath();
+        ctx.arc(x1, y, 2, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(255,255,255,0.25)";
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(x2, y, 2, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(255,255,255,0.25)";
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.moveTo(x1, y);
+        ctx.lineTo(x2, y);
+        ctx.strokeStyle = "rgba(255,255,255,0.08)";
+        ctx.stroke();
+      }
+
+      t += 2;
+      requestAnimationFrame(drawDNA);
+    }
+
+    drawDNA();
+
+    function updateProgress(completed, total, category) {
+      const bar = document.getElementById("progressBar");
+      const text = document.getElementById("progressText");
+      const percent = total === 0 ? 0 : (completed / total) * 100;
+      bar.style.width = percent + "%";
+      text.innerText = `${completed}/${total} questions of ${category} completed`;
+    }
+  </script>
+
+</body>
+
+</html>
