@@ -9,7 +9,7 @@ html, body {
 
 body {
   min-height: 100vh;
-  background: linear-gradient(135deg, #0b0f1a 0%, #11162b 50%, #1a0b26 100%);
+  background: linear-gradient(135deg, #e3ffdf 0%, #90f584 50%, #07b81b 100%);
   background-attachment: fixed;
   color: white;
   font-family: 'Rubik', Arial, sans-serif;
@@ -36,12 +36,12 @@ nav::after {
   background: linear-gradient(
     to right,
     transparent,
-    rgba(255,143,179,0.4),
-    #ff8fb3,
-    rgba(255,143,179,0.4),
+    rgba(113, 255, 110, 0.4)
+    #71ff6e,
+    rgba(113, 255, 110, 0.4),
     transparent
   );
-  box-shadow: 0 0 10px rgba(255,143,179,0.7);
+  box-shadow: 0 0 10px rgba(113,255,110,0.7);
 }
 
 nav ul {
@@ -66,13 +66,13 @@ nav li:last-child {
 
 nav a {
   position: relative;
-  color: #d47a9a;
+  color: #52d950;
   text-decoration: none;
   font-weight: bold;
 }
 
 nav a:hover {
-  color: #ff8fb3;
+  color: #71ff6e;
 }
 
 /* glowing hover underline */
@@ -83,8 +83,8 @@ nav a::after {
   bottom: -6px;
   width: 0%;
   height: 2px;
-  background: #ff8fb3;
-  box-shadow: 0 0 6px #ff8fb3;
+  background: #71ff6e;
+  box-shadow: 0 0 6px #71ff6e;
   transition: all 0.3s ease;
   transform: translateX(-50%);
 }
@@ -118,7 +118,7 @@ nav a:hover::after {
 }
 
 .main-btn {
-  background: #ff8fb3;
+  background: #71ff6e;
   color: white;
   padding: 14px 28px;
   border-radius: 8px;
@@ -129,13 +129,13 @@ nav a:hover::after {
 }
 
 .main-btn:hover {
-  background: #ff6fa3;
+  background: #71ff6e;
   box-shadow: 0 0 25px rgba(255,143,179,1);
 }
 
 .secondary-btn {
-  border: 2px solid #ff8fb3;
-  color: #ff8fb3;
+  border: 2px solid #71ff6e;
+  color: #71ff6e;
   padding: 12px 26px;
   border-radius: 8px;
   text-decoration: none;
@@ -144,7 +144,7 @@ nav a:hover::after {
 }
 
 .secondary-btn:hover {
-  background: #ff8fb3;
+  background: #71ff6e;
   color: white;
 }
 
@@ -173,7 +173,7 @@ nav a:hover::after {
 }
 
 .card h2 {
-  color: #ff8fb3;
+  color: #71ff6e;
 }
 
 /* title glow animation */
@@ -187,8 +187,8 @@ nav a:hover::after {
   100% {
     opacity: 1;
     text-shadow:
-      0 0 10px rgba(255,143,179,0.6),
-      0 0 20px rgba(255,143,179,0.4);
+      0 0 10px rgba(113,255,110,0.6),
+      0 0 20px rgba(113,255,110,0.4);
     transform: translateY(0);
   }
 }
