@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Current and Past Projects</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+
+    body {
+      margin: 0;
+      font-family: 'Rubik', Arial, sans-serif;
+      text-align: center;
+      color: white;
+
+      background:
+        radial-gradient(circle at 20% 25%, #073806 0%, transparent 40%),
+        radial-gradient(circle at 80% 75%, #1a2a4a 0%, transparent 45%),
+        radial-gradient(circle at 50% 90%, #1c3b21 0%, transparent 40%),
+        linear-gradient(180deg, #111321 0%, #0b0d18 100%);
+
+      min-height: 100vh;
+      padding-top: 120px;
+    }
+
+    /* Navbar */
+    nav {
+      margin-bottom: 60px;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      border-bottom: 2px solid rgba(255,255,255,0.3);
+      padding-bottom: 10px;
+    }
+
+    nav li {
+      position: relative;
+      padding: 0 10px;
+    }
+
+    nav li::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: rgba(49, 204, 76, 0.6);
+      border-radius: 1px;
+      opacity: 0.6;
+    }
+
+    nav a {
+      color: #57c76a;
+      font-size: 20px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #39b54f;
+    }
+
+    /* Title */
+    h1 {
+      font-size: 70px;
+      margin-bottom: 60px;
+
+      background: linear-gradient(to right, #daffd6, #75ed69, #40c433);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      text-shadow:
+        0 0 8px rgba(55, 214, 88, 0.8),
+        0 0 18px rgba(55, 214, 88, 0.6),
+        0 0 32px rgba(55, 214, 88, 0.4);
+    }
+
+    /* Cards container */
+    .guides-container {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-bottom: 120px;
+    }
+
+    /* UPDATED CARD LAYOUT */
+    .guide-card {
+      width: 600px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 25px;
+
+      padding: 35px 28px;
+
+      background: rgba(255,255,255,0.05);
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.08);
+
+      backdrop-filter: blur(14px);
+
+      transition: all 0.3s;
+      text-align: left;
+    }
+
+    .guide-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 0 25px rgba(55, 214, 88, 0.35);
+    }
+
+    .card-content {
+      flex: 1;
+    }
+
+    /* Image on right side */
+    .guide-card img {
+      width: 220px;
+      height: 160px;
+      object-fit: cover;
+
+      border-radius: 10px;
+
+      margin-bottom: 0;
+
+      border: 1px solid rgba(255,255,255,0.08);
+
+      box-shadow: 0 0 18px rgba(55, 214, 88, 0.18);
+
+      transition: all 0.3s;
+    }
+
+    .guide-card:hover img {
+      box-shadow: 0 0 24px rgba(55, 214, 88, 0.35);
+    }
+
+    .guide-card h2 {
+      color: #75ed69;
+      margin-bottom: 15px;
+      font-size: 24px;
+    }
+
+    .guide-card p {
+      color: #ccc;
+      font-size: 16px;
+      line-height: 1.5;
+      margin-bottom: 22px;
+    }
+
+    /* Button */
+    .guide-card a {
+      display: inline-block;
+      text-decoration: none;
+
+      background: #75ed69;
+      color: white;
+
+      padding: 11px 22px;
+      border-radius: 8px;
+      font-weight: bold;
+
+      box-shadow: 0 0 15px rgba(55, 214, 88, 0.6);
+
+      transition: all 0.3s;
+    }
+
+    .guide-card a:hover {
+      background: #57c76a;
+      box-shadow: 0 0 25px rgba(55, 214, 88, 1);
+    }
+
+    /* Mobile */
+    @media screen and (max-width:768px) {
+
+      h1 {
+        font-size: 48px;
+      }
+
+      .guides-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+      }
+
+      .guide-card {
+        flex-direction: column;
+        width: 90%;
+        text-align: center;
+      }
+
+      .guide-card img {
+        width: 100%;
+        height: 180px;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body data-page="studyguides">
+
+<nav>
+  <ul>
+     <li><a href="overview.html">Overview</a></li>
+      <li><a href="projects.html">Current and Past Projects</a></li>
+      <li><a href="genes.html">Genes</a></li>
+      <li><a href="considerations.html">Considerations</a></li>
+      <li><a href="futuredirections.html">Future Directions</a></li>
+      <li><a href="research.html">Research</a></li>
+  </ul>
+</nav>
+
+<h1>Current and Past Projects</h1>
+
+<div class="guides-container">
+
+  <div class="guide-card">
+
+    <div class="card-content">
+      <h2>Light Bio</h2>
+
+      <p>
+        LightBio sells bioluminescent plants featured on TIME Best Inventions of 2024. The company engineers glowing petunias--a type of flower-- by introducing four genes from a bioluminescent mushroom and a fifth gene from fungi into the flower. 
+      </p>
+
+      <a href="https://light.bio/?srsltid=AfmBOorNCK0HzvQUMNzmnxAu2SzDWaCtN6ujWsZsHLunSIAgh1n4mokr" target="_blank">
+        View Light Bio
+      </a>
+    </div>
+
+    <img src="lightbio.webp" alt="Light Bio">
+
+    <p class="image-credit">
+    Image credit: Light Bio
+  </p>
+
+  </div>
+
+  <div class="guide-card">
+
+    <div class="card-content">
+      <h2>MIT Nanobionic Plants</h2>
+
+      <p>
+        Instead of directly introducing genes, MIT embedded plants with nanoparticles containing luciferase, an enzyme that catalyzes a light-producing reaction, and other necessary ingredients. For greater control, the glowing plants can be turned off by adding nanoparticles with a luciferase inhibitor and necessary components.
+      </p>
+
+      <a href="https://news.mit.edu/2017/engineers-create-nanobionic-plants-that-glow-1213" target="_blank">
+        View MIT's Project
+      </a>
+    </div>
+
+    <img src="glowingplant.jpg" alt="Glowing Plant">
+
+    <p class="image-credit">
+    Image credit: MIT
+  </p>
+
+  </div>
+
+</div>
+
+</body>
+
+</html>
