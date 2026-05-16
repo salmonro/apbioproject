@@ -13,7 +13,6 @@
       text-align: center;
       color: white;
 
-      /* Apple-style gradient base */
       background: radial-gradient(circle at 20% 25%, #073806 0%, transparent 40%),
                   radial-gradient(circle at 80% 75%, #1a2a4a 0%, transparent 45%),
                   radial-gradient(circle at 50% 90%, #1c3b21 0%, transparent 40%),
@@ -22,7 +21,7 @@
       min-height: 100vh;
     }
 
-   h1 {
+    h1 {
       font-size: 70px;
       margin-bottom: 10px;
 
@@ -49,7 +48,6 @@
       z-index: 1;
     }
 
-    /* Buttons */
     .buttons {
       display: flex;
       justify-content: center;
@@ -89,7 +87,6 @@
       color: white;
     }
 
-    /* Feature cards */
     .features {
       display: flex;
       justify-content: center;
@@ -126,7 +123,7 @@
       line-height: 1.5;
     }
 
-    /* Navbar */
+    /* NAVBAR (moved to top, consistent with other pages) */
     nav {
       margin-top: 60px;
       margin-bottom: 60px;
@@ -194,6 +191,18 @@
 
 <body>
 
+  <!-- NAVBAR MOVED HERE -->
+  <nav>
+    <ul>
+      <li><a href="overview.html">Overview</a></li>
+      <li><a href="projects.html">Current and Past Projects</a></li>
+      <li><a href="genes.html">Genes</a></li>
+      <li><a href="considerations.html">Considerations</a></li>
+      <li><a href="futuredirections.html">Future Directions</a></li>
+      <li><a href="research.html">Research</a></li>
+    </ul>
+  </nav>
+
   <canvas id="dnaCanvas"></canvas>
 
   <div class="hero">
@@ -221,13 +230,5 @@
     </div>
   </div>
 
-  <nav>
-    <ul>
-      <li><a href="overview.html">Overview</a></li>
-      <li><a href="projects.html">Current and Past Projects</a></li>
-      <li><a href="genes.html">Genes</a></li>
-      <li><a href="considerations.html">Considerations</a></li>
-      <li><a href="futuredirections.html">Future Directions</a></li>
-      <li><a href="research.html">Research</a></li>
-    </ul>
-  </nav>
+</body>
+</html>
