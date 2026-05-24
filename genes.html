@@ -26,7 +26,7 @@
     /* NAVBAR */
 
     nav {
-      margin-bottom: 50px;
+      margin-bottom: 45px;
     }
 
     nav ul {
@@ -78,11 +78,11 @@
       color: #39b54f;
     }
 
-    /* TITLE */
+    /* MAIN TITLE */
 
     h1 {
-      font-size: 72px;
-      margin-bottom: 70px;
+      font-size: 68px;
+      margin-bottom: 55px;
 
       background: linear-gradient(to right, #daffd6, #75ed69, #40c433);
 
@@ -95,65 +95,80 @@
         0 0 32px rgba(55, 214, 88, 0.4);
     }
 
-    /* METHODS SECTION */
+    /* METHODS GRID */
 
     .methods-container {
-      width: 90%;
-      max-width: 1100px;
-
-      margin: auto auto 120px auto;
-
       display: flex;
-      flex-direction: column;
 
-      gap: 30px;
+      justify-content: center;
+
+      flex-wrap: wrap;
+
+      gap: 35px;
+
+      width: 92%;
+
+      margin: auto auto 100px auto;
     }
 
-    .method-card {
-      background: rgba(255,255,255,0.05);
+    /* METHOD CARDS */
 
-      border-radius: 18px;
+    .method-card {
+      width: 300px;
+      height: 240px;
+
+      background: rgba(255,255,255,0.04);
+
+      border-radius: 20px;
 
       border: 1px solid rgba(255,255,255,0.08);
 
       backdrop-filter: blur(14px);
 
-      padding: 35px;
+      padding: 30px;
 
       text-align: left;
 
       transition: all 0.35s;
+
+      box-sizing: border-box;
     }
 
     .method-card:hover {
-      transform: translateY(-6px);
+      transform: translateY(-8px);
 
       box-shadow:
-        0 0 25px rgba(55,214,88,0.3);
+        0 0 24px rgba(55,214,88,0.22);
     }
 
     .method-card h2 {
       color: #75ed69;
 
-      font-size: 32px;
+      font-size: 28px;
 
-      margin-bottom: 15px;
+      line-height: 1.2;
+
+      margin-top: 0;
+      margin-bottom: 16px;
     }
 
     .method-card p {
       color: #ccc;
 
-      font-size: 18px;
+      font-size: 15px;
 
       line-height: 1.7;
+
+      margin: 0;
     }
 
-    /* ORGANISM TITLE */
+    /* SECTION TITLE */
 
     .section-title {
-      font-size: 54px;
+      font-size: 52px;
 
-      margin-bottom: 60px;
+      margin-top: 40px;
+      margin-bottom: 55px;
 
       background: linear-gradient(to right, #daffd6, #75ed69, #40c433);
 
@@ -174,14 +189,14 @@
 
       flex-wrap: wrap;
 
-      gap: 40px;
+      gap: 38px;
 
       width: 92%;
 
       margin: auto auto 120px auto;
     }
 
-    /* CARD */
+    /* ORGANISM CARD */
 
     .organism-card {
       position: relative;
@@ -206,7 +221,7 @@
       transform: translateY(-8px);
     }
 
-    /* IMAGE */
+    /* SILHOUETTES */
 
     .organism-card img {
       position: absolute;
@@ -221,7 +236,7 @@
 
       transform: translate(-50%, -50%);
 
-      opacity: 0.16;
+      opacity: 0.22;
 
       transition: all 0.35s;
     }
@@ -241,7 +256,7 @@
     .organism-info h3 {
       color: white;
 
-      font-size: 28px;
+      font-size: 27px;
 
       line-height: 1.2;
 
@@ -274,7 +289,7 @@
     }
 
     .jellyfish:hover img {
-      opacity: 0.24;
+      opacity: 0.32;
 
       filter:
         drop-shadow(0 0 24px rgba(120,220,255,0.8));
@@ -286,7 +301,7 @@
     }
 
     .firefly:hover img {
-      opacity: 0.24;
+      opacity: 0.32;
 
       filter:
         drop-shadow(0 0 24px rgba(190,255,90,0.8));
@@ -298,7 +313,7 @@
     }
 
     .mushroom:hover img {
-      opacity: 0.24;
+      opacity: 0.32;
 
       filter:
         drop-shadow(0 0 24px rgba(80,255,140,0.8));
@@ -310,7 +325,7 @@
     }
 
     .bacteria:hover img {
-      opacity: 0.24;
+      opacity: 0.32;
 
       filter:
         drop-shadow(0 0 24px rgba(80,255,220,0.8));
@@ -322,7 +337,7 @@
     }
 
     .coral:hover img {
-      opacity: 0.24;
+      opacity: 0.32;
 
       filter:
         drop-shadow(0 0 24px rgba(100,180,255,0.8));
@@ -334,7 +349,7 @@
     }
 
     .shrimp:hover img {
-      opacity: 0.24;
+      opacity: 0.32;
 
       filter:
         drop-shadow(0 0 24px rgba(180,140,255,0.8));
@@ -345,11 +360,11 @@
     @media screen and (max-width:768px) {
 
       h1 {
-        font-size: 52px;
+        font-size: 50px;
       }
 
       .section-title {
-        font-size: 42px;
+        font-size: 40px;
       }
 
       nav ul {
@@ -357,8 +372,10 @@
         gap: 15px;
       }
 
-      .organism-card {
+      .organism-card,
+      .method-card {
         width: 92%;
+        height: auto;
       }
 
     }
@@ -386,39 +403,43 @@
   <div class="methods-container">
 
     <div class="method-card">
+
       <h2>CRISPR-Cas9 System</h2>
 
       <p>
-        CRISPR-Cas9 allows scientists to precisely modify DNA sequences by targeting specific genes.
-        This technology can potentially insert bioluminescent genes into plant genomes while minimizing unintended mutations.
+        CRISPR-Cas9 allows scientists to directly insert foreign DNA into plant genomes.
       </p>
+
     </div>
 
     <div class="method-card">
+
       <h2>Agrobacterium tumefaciens</h2>
 
       <p>
-        Agrobacterium naturally transfers DNA into plant cells through plasmids.
-        Scientists can engineer these plasmids to deliver foreign bioluminescent genes into plants.
+        Agrobacterium acts as a delivery vehicle (through plasmids) to deliver foreign genes.
       </p>
+
     </div>
 
     <div class="method-card">
+
       <h2>Electroporation with Foreign DNA</h2>
 
       <p>
-        Electroporation uses short electrical pulses to temporarily open pores in cell membranes,
-        allowing foreign DNA to enter plant cells.
+        Cell membranes are subjected to electrical pulses, and foreign DNA enters through the resulting membrane pores.
       </p>
+
     </div>
 
     <div class="method-card">
+
       <h2>Nanoparticle Insertion</h2>
 
       <p>
-        Nanoparticles can transport enzymes, proteins, or genetic material directly into plant tissues.
-        This method may allow temporary bioluminescence without permanent genome modification.
+        Enzymes can be packaged in nanoparticles, bypassing the need for genome engineering.
       </p>
+
     </div>
 
   </div>
@@ -430,7 +451,7 @@
     <!-- JELLYFISH -->
     <div class="organism-card jellyfish">
 
-      <img src="images/jellyfish silhouette.png" alt="Jellyfish">
+      <img src="jellyfish silhouette.png" alt="Jellyfish">
 
       <div class="organism-info">
 
@@ -452,7 +473,7 @@
     <!-- FIREFLY -->
     <div class="organism-card firefly">
 
-      <img src="images/firefly silhouette 2.png" alt="Firefly">
+      <img src="firefly silhouette 2.png" alt="Firefly">
 
       <div class="organism-info">
 
@@ -469,7 +490,7 @@
     <!-- MUSHROOM -->
     <div class="organism-card mushroom">
 
-      <img src="images/mushroom silhouette.png" alt="Mushroom">
+      <img src="mushroom silhouette.png" alt="Mushroom">
 
       <div class="organism-info">
 
@@ -493,7 +514,7 @@
     <!-- BACTERIA -->
     <div class="organism-card bacteria">
 
-      <img src="images/bacteria.png" alt="Bacteria">
+      <img src="bacteria silhouette.png" alt="Bacteria">
 
       <div class="organism-info">
 
@@ -515,7 +536,7 @@
     <!-- CORAL -->
     <div class="organism-card coral">
 
-      <img src="images/coral silhouette.png" alt="Coral">
+      <img src="coral silhouette.png" alt="Coral">
 
       <div class="organism-info">
 
@@ -527,7 +548,7 @@
         </p>
 
         <span>
-          Luciferase-catalyzed reaction involving coelenterazine, similar to marine luciferin systems.
+          Luciferase-catalyzed reaction involving coelenterazine in marine organisms.
         </span>
 
       </div>
@@ -537,7 +558,7 @@
     <!-- SHRIMP -->
     <div class="organism-card shrimp">
 
-      <img src="images/shrimp silhouette.png" alt="Shrimp">
+      <img src="shrimp silhouette.png" alt="Shrimp">
 
       <div class="organism-info">
 
@@ -549,7 +570,7 @@
         </p>
 
         <span>
-          Produces glowing defensive clouds through luciferase-luciferin reactions in specialized glands.
+          Produces bioluminescent clouds through luciferase-luciferin reactions in specialized mouth glands.
         </span>
 
       </div>
