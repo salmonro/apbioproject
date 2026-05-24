@@ -13,23 +13,67 @@
       color: white;
       min-height: 100vh;
       padding-top: 30px;
+      overflow-x: hidden;
 
       background:
         radial-gradient(circle at 20% 25%, #073806 0%, transparent 40%),
         radial-gradient(circle at 80% 75%, #1a2a4a 0%, transparent 45%),
         radial-gradient(circle at 50% 90%, #1c3b21 0%, transparent 40%),
-        linear-gradient(180deg, #111321 0%, #0b0d18 100%);
+        linear-gradient(180deg, #0b0d18 0%, #05060d 100%);
     }
 
-    /* NAV */
+    /* ================= CIRCADIAN ANIMATION ================= */
+
+    .sky {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 170px;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .sun, .moon {
+      position: absolute;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      top: 70px;
+      animation: orbit 14s linear infinite;
+    }
+
+    .sun {
+      background: radial-gradient(circle, #ffe57a, #ff9f1a);
+      box-shadow: 0 0 25px rgba(255,200,80,0.8);
+    }
+
+    .moon {
+      background: radial-gradient(circle, #dfe8ff, #7a8cff);
+      animation-delay: -7s;
+      box-shadow: 0 0 25px rgba(120,160,255,0.6);
+    }
+
+    @keyframes orbit {
+      0% { left: -80px; transform: translateY(20px); }
+      25% { transform: translateY(-30px); }
+      50% { left: 50%; transform: translateY(40px); }
+      75% { transform: translateY(-20px); }
+      100% { left: 110%; transform: translateY(20px); }
+    }
+
+    /* ================= NAV ================= */
+
     nav ul {
       list-style: none;
       display: flex;
       justify-content: center;
       gap: 30px;
       flex-wrap: wrap;
+      border-bottom: 2px solid rgba(255,255,255,0.15);
       padding-bottom: 10px;
-      border-bottom: 2px solid rgba(255,255,255,0.2);
+      position: relative;
+      z-index: 2;
     }
 
     nav a {
@@ -38,67 +82,82 @@
       font-weight: bold;
     }
 
+    nav a:hover {
+      text-shadow: 0 0 10px rgba(113,255,110,0.7);
+    }
+
     h1 {
       text-align: center;
       font-size: 64px;
-      margin-bottom: 30px;
+      margin: 25px 0;
       background: linear-gradient(to right, #daffd6, #75ed69, #40c433);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      position: relative;
+      z-index: 2;
     }
 
-    /* ACCORDION WRAPPER */
+    /* ================= ACCORDION ================= */
+
     .accordion {
       width: 85%;
       margin: auto;
       margin-bottom: 120px;
+      position: relative;
+      z-index: 2;
     }
 
-    /* EACH BLOCK */
-    .accordion-item {
+    .item {
       background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid rgba(113,255,110,0.15);
       border-radius: 16px;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
+      backdrop-filter: blur(14px);
       overflow: hidden;
-      backdrop-filter: blur(12px);
+      transition: 0.3s;
     }
 
-    /* HEADER */
-    .accordion-header {
+    .item:hover {
+      box-shadow: 0 0 25px rgba(113,255,110,0.15);
+      transform: translateY(-2px);
+    }
+
+    .header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 25px;
+      padding: 18px 22px;
       cursor: pointer;
-      font-weight: bold;
       color: #75ed69;
-      font-size: 18px;
+      font-weight: bold;
     }
 
-    .accordion-header:hover {
-      background: rgba(255,255,255,0.03);
-    }
-
-    .toggle {
-      font-size: 22px;
+    .plus {
+      transition: 0.3s;
+      font-size: 20px;
       color: white;
     }
 
-    /* CONTENT */
-    .accordion-content {
-      display: none;
-      padding: 0 25px 25px 25px;
+    .item.active .plus {
+      transform: rotate(45deg);
+      color: #71ff6e;
+    }
+
+    .content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.45s ease;
+      padding: 0 22px;
       color: #ddd;
       line-height: 1.8;
       font-size: 15px;
     }
 
-    .accordion-item.active .accordion-content {
-      display: block;
+    .item.active .content {
+      max-height: 1200px;
+      padding-bottom: 18px;
     }
 
-    /* LINKS */
     a {
       color: #75ed69;
     }
@@ -107,6 +166,11 @@
 </head>
 
 <body>
+
+<div class="sky">
+  <div class="sun"></div>
+  <div class="moon"></div>
+</div>
 
 <nav>
   <ul>
@@ -124,25 +188,23 @@
 
 <div class="accordion">
 
-  <!-- 1 -->
-  <div class="accordion-item">
-    <div class="accordion-header" onclick="toggle(this)">
-      Lingering Question <span class="toggle">+</span>
+  <div class="item">
+    <div class="header" onclick="toggle(this)">
+      Lingering question <span class="plus">+</span>
     </div>
-    <div class="accordion-content">
+    <div class="content">
 
 Lingering question: How do we make the trees light up only at night and control its bioluminescence?
-MIT engineers (<a href="https://news.mit.edu/2017/engineers-create-nanobionic-plants-that-glow-1213">MIT 2017</a>) are planning on inserting nanoparticles with luciferase inhibitors to “turn off” bioluminescence when desired
+MIT engineers (<a href="https://news.mit.edu/2017/engineers-create-nanobionic-plants-that-glow-1213" target="_blank">Strano et al., 2017</a>) are planning on inserting nanoparticles with luciferase inhibitors to “turn off” bioluminescence when desired
 
     </div>
   </div>
 
-  <!-- 2 -->
-  <div class="accordion-item">
-    <div class="accordion-header" onclick="toggle(this)">
-      Circadian System Idea <span class="toggle">+</span>
+  <div class="item">
+    <div class="header" onclick="toggle(this)">
+      Circadian system idea <span class="plus">+</span>
     </div>
-    <div class="accordion-content">
+    <div class="content">
 
 Can we utilize natural circadian rhythm systems in plants so that plants “glow” in the night and do not glow in the dark? Can luciferase be activated at certain times of the day and inactivated at others? -> light, temperature, and other conditions.
 
@@ -153,86 +215,77 @@ Specialized glands/organs that contain luciferase, oxygen, luciferin, hispidin a
     </div>
   </div>
 
-  <!-- 3 -->
-  <div class="accordion-item">
-    <div class="accordion-header" onclick="toggle(this)">
-      Circadian Proteins <span class="toggle">+</span>
+  <div class="item">
+    <div class="header" onclick="toggle(this)">
+      Circadian proteins <span class="plus">+</span>
     </div>
-    <div class="accordion-content">
+    <div class="content">
 
-ZEITLUPE (ZTL): Blue-light photoreceptor proteins that regulate the circadian clock and flowering. Synchronizes plant internal biological clocks with outside signals and day-night cycle
+ZEITLUPE (ZTL): Blue-light photoreceptor proteins that regulate the circadian clock and flowering.
 
-CCA1, LHY, TOC1. CCA1 and LHY are transcription factors for morning genes. TOC1 is a transcription repressor that peaks in the evening (https://www.science.org/doi/10.1126/science.1061320)
+CCA1, LHY, TOC1. CCA1 and LHY are transcription factors for morning genes. TOC1 is a transcription repressor that peaks in the evening (<a href="https://www.science.org/doi/10.1126/science.1061320" target="_blank">Millar & Kay, 2000</a>)
 
-The DET1 protein in Arabidopsis may also play a role in regulating plant circadian systems by repressing “evening” genes such as CCA1/LHY. Basically, DET1 binds to transcriptional regulators including COP10 and DDB1 to form a transcriptional co-repressor complex and repress expression of transcription inhibitors (like TOC1) which then subsequently suppresses expression of CCA1. Turns evening genes off in the morning (https://www.cell.com/molecular-cell/fulltext/S1097-2765(11)00536-3?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS1097276511005363%3Fshowall%3Dtrue)
+The DET1 protein in Arabidopsis regulates circadian repression (<a href="https://www.cell.com/molecular-cell/fulltext/S1097-2765(11)00536-3" target="_blank">Dong et al., 2011</a>)
 
     </div>
   </div>
 
-  <!-- 4 -->
-  <div class="accordion-item">
-    <div class="accordion-header" onclick="toggle(this)">
-      Questions Section <span class="toggle">+</span>
+  <div class="item">
+    <div class="header" onclick="toggle(this)">
+      Questions <span class="plus">+</span>
     </div>
-    <div class="accordion-content">
+    <div class="content">
 
 Question: what makes an evening gene an “evening” gene and what makes a “morning” gene a morning gene?
 
     </div>
   </div>
 
-  <!-- 5 -->
-  <div class="accordion-item">
-    <div class="accordion-header" onclick="toggle(this)">
-      Ions <span class="toggle">+</span>
+  <div class="item">
+    <div class="header" onclick="toggle(this)">
+      Ions <span class="plus">+</span>
     </div>
-    <div class="accordion-content">
+    <div class="content">
 
-Can we use ions to control these fluorescent genes? “Nutrient ions, such as Ca2+, Mg2+, and Fe2+, are also found to act in regulatory relationships between metabolic signals and the circadian clock” (https://pmc.ncbi.nlm.nih.gov/articles/PMC10181312/)
+Can we use ions to control these fluorescent genes?
 
-Rhythmic Mg2+ fluctuations control carbon fixation and sugar accumulation in rice chloroplasts (https://pmc.ncbi.nlm.nih.gov/articles/PMC10181312/)
+“Nutrient ions regulate circadian clock signaling” (<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10181312/" target="_blank">Sanchez et al., 2023</a>)
 
-Mg2+ is also an essential cofactor for ATP-dependent enzymes involved in fluorescence in firefly enzymes like luciferase. Binds ATP and facilitates the adenylation of luciferin (https://www.sciencedirect.com/topics/medicine-and-dentistry/firefly-luciferase)
+Mg2+ controls carbon fixation rhythms (<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10181312/" target="_blank">Sanchez et al., 2023</a>)
 
-    </div>
-  </div>
-
-  <!-- 6 -->
-  <div class="accordion-item">
-    <div class="accordion-header" onclick="toggle(this)">
-      Temperature and Circadian Rhythm <span class="toggle">+</span>
-    </div>
-    <div class="accordion-content">
-
-Several circadian clock genes, including CCA1, LHY, GI, PRR7, PRR9, have been shown to interact with temperature signals
-
-INTERESTING CONNECTION TO GFP: “For example, ELF3, a member of the EC, functions as a thermosensor. At higher temperatures, ELF3 fused with green fluorescent protein forms speckles within a few minutes in response to higher temperatures” (https://pmc.ncbi.nlm.nih.gov/articles/PMC10181312/)
-
-Some genes like CCA1 and LHY may regulate circadian systems through rhythmic histone modification of various clock genes like SDG2 and JMJ14 (https://link.springer.com/article/10.1186/s13059-019-1777-1)
+Luciferase requires Mg2+ for ATP-dependent activation (<a href="https://www.sciencedirect.com/topics/medicine-and-dentistry/firefly-luciferase" target="_blank">Wilson et al., 2019</a>)
 
     </div>
   </div>
 
-  <!-- 7 -->
-  <div class="accordion-item">
-    <div class="accordion-header" onclick="toggle(this)">
-      Engineering & Promoters <span class="toggle">+</span>
+  <div class="item">
+    <div class="header" onclick="toggle(this)">
+      Temperature & circadian rhythm <span class="plus">+</span>
     </div>
-    <div class="accordion-content">
+    <div class="content">
 
-Engineering a transcription factor with a molecular binding domain shape that can bind to the luciferase gene. The transcription factor also can bind to other transcription factors of the light-day circadian cycles And probably complementary short DNA sequences
+Circadian genes interact with temperature signals (<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10181312/" target="_blank">Sanchez et al., 2023</a>)
 
-How to make bioluminescent genes like luciferase a “night” gene, i.e. activated in the night and repressed in the morning?
+ELF3 acts as a thermosensor linked to fluorescent speckling (<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10181312/" target="_blank">Sanchez et al., 2023</a>)
 
-Altering promoters
+Histone modification regulates circadian genes (<a href="https://link.springer.com/article/10.1186/s13059-019-1777-1" target="_blank">Huang et al., 2019</a>)
 
-Methylation & acetylation(?)
+    </div>
+  </div>
 
-Circadian promoters, like a CCA1 or TOC1 promoter that bind to specific motifs (https://pmc.ncbi.nlm.nih.gov/articles/PMC3189347/)
+  <div class="item">
+    <div class="header" onclick="toggle(this)">
+      Engineering & promoters <span class="plus">+</span>
+    </div>
+    <div class="content">
 
-LUX binding sites for circadian repression (https://www.nature.com/articles/s41467-019-10485-6?)
+Engineering transcription factors for luciferase control.
 
-CCA1/LHY (morning activators), TOC1/PRR (evening repressors)
+Circadian promoters like CCA1 or TOC1 regulate rhythmic expression (<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3189347/" target="_blank">Harmer et al., 2009</a>)
+
+LUX binding sites enable circadian repression (<a href="https://www.nature.com/articles/s41467-019-10485-6" target="_blank">Greenwood et al., 2019</a>)
+
+CCA1/LHY act as morning activators, TOC1/PRR as evening repressors
 
     </div>
   </div>
@@ -241,8 +294,7 @@ CCA1/LHY (morning activators), TOC1/PRR (evening repressors)
 
 <script>
 function toggle(el) {
-  const item = el.parentElement;
-  item.classList.toggle("active");
+  el.parentElement.classList.toggle("active");
 }
 </script>
 
