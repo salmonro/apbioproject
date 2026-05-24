@@ -9,108 +9,94 @@
     body {
       margin: 0;
       font-family: 'Rubik', Arial, sans-serif;
-      color: white;
       text-align: center;
-      padding-top: 30px;
-      min-height: 100vh;
-      overflow-x: hidden;
+      color: white;
 
       background:
         radial-gradient(circle at 20% 25%, #073806 0%, transparent 40%),
         radial-gradient(circle at 80% 75%, #1a2a4a 0%, transparent 45%),
-        linear-gradient(180deg, #0b0f1a 0%, #070912 100%);
+        radial-gradient(circle at 50% 90%, #1c3b21 0%, transparent 40%),
+        linear-gradient(180deg, #111321 0%, #0b0d18 100%);
+
+      min-height: 100vh;
+      padding-top: 30px;
     }
 
-    /* 🌗 CIRCADIAN BACKGROUND */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -2;
-
-      background:
-        radial-gradient(circle at 20% 30%, rgba(80,220,140,0.18), transparent 45%),
-        radial-gradient(circle at 80% 70%, rgba(120,140,255,0.16), transparent 50%);
-
-      animation: glow 16s ease-in-out infinite;
+    nav {
+      margin-bottom: 45px;
     }
 
-    @keyframes glow {
-      0% { filter: brightness(0.85); }
-      50% { filter: brightness(1.2); }
-      100% { filter: brightness(0.85); }
+    nav ul {
+      list-style: none;
+      padding: 0;
+
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+
+      flex-wrap: wrap;
+
+      border-bottom: 2px solid rgba(255,255,255,0.3);
+      padding-bottom: 10px;
     }
 
-    /* ☀️🌙 SUN / MOON */
-    .sun, .moon {
-      position: fixed;
-      top: 12%;
-      left: -10%;
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-      z-index: -1;
-      pointer-events: none;
+    nav li {
+      position: relative;
+      padding: 0 10px;
     }
 
-    .sun {
-      background: radial-gradient(circle, #fff7b0, #ffcc33, #ff9900);
-      box-shadow: 0 0 40px rgba(255,200,60,0.5);
-      animation: sunMove 22s linear infinite;
+    nav li::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: rgba(49, 204, 76, 0.6);
+      border-radius: 1px;
+      opacity: 0.6;
     }
 
-    .moon {
-      background: radial-gradient(circle, #f5f7ff, #aab6d6, #6b7a99);
-      box-shadow: 0 0 30px rgba(180,200,255,0.4);
-      animation: moonMove 22s linear infinite;
+    nav a {
+      color: #57c76a;
+      font-size: 20px;
+      text-decoration: none;
+      font-weight: bold;
     }
 
-    @keyframes sunMove {
-      0% { transform: translate(-20vw, 20vh); opacity: 0; }
-      50% { transform: translate(50vw, -10vh); opacity: 1; }
-      100% { transform: translate(120vw, 20vh); opacity: 0; }
-    }
-
-    @keyframes moonMove {
-      0% { transform: translate(120vw, 25vh); opacity: 0; }
-      50% { transform: translate(50vw, 5vh); opacity: 1; }
-      100% { transform: translate(-20vw, 25vh); opacity: 0; }
-    }
-
-    /* TITLE */
     h1 {
-      font-size: 70px;
-      margin-bottom: 20px;
+      font-size: 72px;
+      margin-bottom: 25px;
 
-      background: linear-gradient(to right, #d9ffd6, #75ed69, #40c433);
+      background: linear-gradient(to right, #daffd6, #75ed69, #40c433);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    /* INTRO */
     .intro-box {
       width: 78%;
-      margin: auto auto 50px auto;
-      padding: 30px;
+      margin: auto auto 70px auto;
+      padding: 35px;
 
-      background: rgba(255,255,255,0.04);
+      background: rgba(255,255,255,0.05);
+      border-radius: 18px;
       border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 16px;
-      backdrop-filter: blur(12px);
 
+      backdrop-filter: blur(14px);
       color: #ccc;
+      font-size: 18px;
       line-height: 1.8;
     }
 
-    /* ACCORDION */
+    /* ACCORDION CARDS */
     .card {
       width: 85%;
       margin: 18px auto;
       border-radius: 14px;
       overflow: hidden;
-
-      background: rgba(255,255,255,0.03);
+      background: rgba(255,255,255,0.04);
       border: 1px solid rgba(255,255,255,0.1);
+      text-align: left;
     }
 
     .card-header {
@@ -119,12 +105,10 @@
       padding: 18px;
       cursor: pointer;
       font-weight: bold;
-      text-align: left;
     }
 
     .plus {
       transition: 0.3s;
-      font-size: 22px;
     }
 
     .card.active .plus {
@@ -136,23 +120,21 @@
       overflow: hidden;
       transition: 0.4s ease;
       padding: 0 18px;
-      text-align: left;
-      color: #ddd;
       white-space: pre-wrap;
+      color: #ddd;
     }
 
     .card.active .card-content {
-      max-height: 6000px;
+      max-height: 10000px;
       padding-bottom: 18px;
     }
 
     /* FIGURES */
     .figure {
-      margin: 15px 0;
-      padding: 10px;
+      margin: 12px 0;
+      border: 1px solid rgba(255,255,255,0.15);
       border-radius: 10px;
-      border: 1px solid rgba(255,255,255,0.12);
-      cursor: pointer;
+      padding: 10px;
     }
 
     .figure img {
@@ -162,8 +144,8 @@
 
     .caption {
       font-size: 12px;
-      color: #bbb;
       text-align: center;
+      color: #aaa;
     }
 
     a {
@@ -175,8 +157,17 @@
 
 <body>
 
-<div class="sun"></div>
-<div class="moon"></div>
+<nav>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="overview.html">Overview</a></li>
+    <li><a href="projects.html">Current and Past Projects</a></li>
+    <li><a href="genes.html">Genes</a></li>
+    <li><a href="considerations.html">Considerations</a></li>
+    <li><a href="futuredirections.html">Future Directions</a></li>
+    <li><a href="research.html">Research</a></li>
+  </ul>
+</nav>
 
 <h1>Future Directions</h1>
 
@@ -185,18 +176,20 @@ Rosa’s Thoughts & Ideas: Drop down unfolding format
 Main question: How do we control the duration and time of plant bioluminescence, such as night versus day bioluminescence?
 </div>
 
-<!-- 1 -->
+<!-- CARD 1 -->
 <div class="card">
   <div class="card-header">
     Plant Circadian System Overview
     <div class="plus">+</div>
   </div>
+
   <div class="card-content">
 
-Subsection: Clock genes  
-Subsection: Transcription factors  
-Subsection: Temperature and the circadian rhythm  
-Subsection: Effect of ion concentrations  
+Plant Circadian System Overview
+Subsection: Clock genes
+Subsection: Transcription factors
+Subsection: Temperature and the circadian rhythm
+Subsection: Effect of ion concentrations
 
 <div class="figure">
   <img src="input.png">
@@ -206,14 +199,16 @@ Subsection: Effect of ion concentrations
   </div>
 </div>
 
-<!-- 2 -->
+<!-- CARD 2 -->
 <div class="card">
   <div class="card-header">
     Circadian-Bioluminescence Coordination Ideas
     <div class="plus">+</div>
   </div>
+
   <div class="card-content">
 
+Circadian-Bioluminescence Coordination Ideas
 Engineering a transcription factor that…
 
 <div class="figure">
@@ -224,43 +219,85 @@ Engineering a transcription factor that…
   </div>
 </div>
 
-<!-- 3 -->
+<!-- CARD 3 -->
 <div class="card">
   <div class="card-header">
     Ongoing Questions about Circadian-Entrained Bioluminescent Plants
     <div class="plus">+</div>
   </div>
+
   <div class="card-content">
 
-Lingering question: How do we make the trees light up only at night and control its bioluminescence? MIT engineers (<a href="https://news.mit.edu/2017/engineers-create-nanobionic-plants-that-glow-1213">MIT 2017</a>) are planning on inserting nanoparticles with luciferase inhibitors to “turn off” bioluminescence when desired
+Lingering question: How do we make the trees light up only at night and control its bioluminescence?
+MIT engineers (<a href="https://news.mit.edu/2017/engineers-create-nanobionic-plants-that-glow-1213">MIT 2017</a>) are planning on inserting nanoparticles with luciferase inhibitors to “turn off” bioluminescence when desired
 
 Circadian system idea:
 - Can we utilize natural circadian rhythm systems in plants so that plants “glow” in the night and do not glow in the dark? Can luciferase be activated at certain times of the day and inactivated at others? -> light, temperature, and other conditions. 
 
 “Molecular clock” proteins can activate or inactivate some of the fluorescent proteins like luciferase
+
 Specialized glands/organs that contain luciferase, oxygen, luciferin, hispidin and necessary components. Possibly in the leaves
 
-Circadian proteins ZEITLUPE (ZTL)…
+Circadian proteins ZEITLUPE (ZTL): Blue-light photoreceptor proteins that regulate the circadian clock and flowering. Synchronizes plant internal biological clocks with outside signals and day-night cycle
 
-CCA1, LHY, TOC1… (<a href="https://www.science.org/doi/10.1126/science.1061320">Harmer 2001</a>)
+CCA1, LHY, TOC1. CCA1 and LHY are transcription factors for morning genes. TOC1 is a transcription repressor that peaks in the evening
+(<a href="https://www.science.org/doi/10.1126/science.1061320">Harmer 2001</a>)
 
-DET1 protein… (<a href="https://www.cell.com/molecular-cell/fulltext/S1097-2765(11)00536-3">Lau 2011</a>)
+The DET1 protein in Arabidopsis may also play a role in regulating plant circadian systems by repressing “evening” genes such as CCA1/LHY...
+(<a href="https://www.cell.com/molecular-cell/fulltext/S1097-2765(11)00536-3">Lau 2011</a>)
 
   </div>
 </div>
 
-<!-- 4 -->
+<!-- CARD 4 -->
+<div class="card">
+  <div class="card-header">
+    Questions Section
+    <div class="plus">+</div>
+  </div>
+
+  <div class="card-content">
+
+Question: what makes an evening gene an “evening” gene and what makes a “morning” gene a morning gene?
+
+Can we use ions to control these fluorescent genes?
+“Nutrient ions, such as Ca2+, Mg2+, and Fe2+, are also found to act in regulatory relationships between metabolic signals and the circadian clock”
+(<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10181312/">2023</a>)
+
+Rhythmic Mg2+ fluctuations control carbon fixation and sugar accumulation in rice chloroplasts
+(<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10181312/">2023</a>)
+
+Mg2+ is also an essential cofactor for ATP-dependent enzymes involved in fluorescence in firefly enzymes like luciferase
+(<a href="https://www.sciencedirect.com/topics/medicine-and-dentistry/firefly-luciferase">2020</a>)
+
+Temperature and the circadian rhythm:
+Several circadian clock genes, including CCA1, LHY, GI, PRR7, PRR9, have been shown to interact with temperature signals
+
+ELF3 thermosensor + GFP speckles:
+(<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10181312/">2023</a>)
+
+Some genes like CCA1 and LHY may regulate circadian systems through histone modification
+(<a href="https://link.springer.com/article/10.1186/s13059-019-1777-1">2019</a>)
+
+Engineering transcription factor idea...
+How to make luciferase a “night” gene?
+
+  </div>
+</div>
+
+<!-- CARD 5 -->
 <div class="card">
   <div class="card-header">
     Altering Promoters
     <div class="plus">+</div>
   </div>
+
   <div class="card-content">
 
--Alter the promoters of clock genes  
--Methylation & acetylation(?)  
--Circadian promoters, like a CCA1 or TOC1 promoter (<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3189347/">2010</a>)  
--LUX binding sites for circadian repression (<a href="https://www.nature.com/articles/s41467-019-10485-6">2019</a>)  
+-Alter the promoters of clock genes
+-Methylation & acetylation(?)
+-Circadian promoters like CCA1 or TOC1
+-LUX binding sites for circadian repression
 -CCA1/LHY (morning activators), TOC1/PRR (evening repressors)
 
   </div>
