@@ -16,63 +16,100 @@ body {
   text-align: center;
 }
 
-/* Navigation */
-nav {
-  background: #11162b;
-  padding: 15px;
-  position: relative;
-  padding-bottom: 20px;
-}
+/* ================= NAVIGATION ================= */
 
-/* glowing divider under navbar */
-nav::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  width: 80%;
-  height: 2px;
-  transform: translateX(-50%);
-  background: linear-gradient(
-    to right,
-    transparent,
-    rgba(113, 255, 110, 0.4)
-    #71ff6e,
-    rgba(113, 255, 110, 0.4),
-    transparent
-  );
-  box-shadow: 0 0 10px rgba(113,255,110,0.7);
+nav {
+  margin-bottom: 45px;
+  padding-top: 10px;
 }
 
 nav ul {
   list-style: none;
+  padding: 0;
+
   display: flex;
   justify-content: center;
-  align-items: center;
-  margin: 0;
-  padding: 0;
+  gap: 30px;
+
+  flex-wrap: wrap;
+
+  border-bottom: 2px solid rgba(255,255,255,0.18);
+
+  padding-bottom: 14px;
+
+  width: 90%;
+  margin: auto;
 }
 
 nav li {
-  display: flex;
-  align-items: center;
-  padding: 0 18px;
-  border-right: 1px solid rgba(255,255,255,0.75);
+  position: relative;
+  padding: 0 8px;
 }
 
-nav li:last-child {
-  border-right: none;
+nav li::after {
+  content: '';
+
+  position: absolute;
+
+  bottom: -14px;
+  left: 0;
+
+  width: 100%;
+  height: 2px;
+
+  background: rgba(113,255,110,0.55);
+
+  border-radius: 2px;
+
+  opacity: 0.5;
 }
 
 nav a {
   position: relative;
-  color: #52d950;
+
+  color: #57c76a;
+
+  font-size: 20px;
+
   text-decoration: none;
+
   font-weight: bold;
+
+  transition: all 0.3s ease;
 }
 
 nav a:hover {
   color: #71ff6e;
+
+  text-shadow:
+    0 0 8px rgba(113,255,110,0.7),
+    0 0 18px rgba(113,255,110,0.35);
+}
+
+/* glowing underline animation */
+
+nav a::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  bottom: -6px;
+
+  width: 0%;
+  height: 2px;
+
+  background: #71ff6e;
+
+  box-shadow: 0 0 8px #71ff6e;
+
+  transition: all 0.3s ease;
+
+  transform: translateX(-50%);
+}
+
+nav a:hover::after {
+  width: 75%;
 }
 
 /* glowing hover underline */
