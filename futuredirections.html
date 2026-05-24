@@ -1,139 +1,185 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-  <meta charset="UTF-8" />
   <title>Future Directions</title>
+  <link rel="stylesheet" href="style.css">
 
   <style>
-    :root {
-      --day1: #0b3b2e;
-      --day2: #1b2a4a;
-      --day3: #1a3b2a;
-      --night1: #070a12;
-      --night2: #05070d;
-    }
 
     body {
       margin: 0;
       font-family: 'Rubik', Arial, sans-serif;
+      text-align: center;
       color: white;
+
       min-height: 100vh;
-      padding: 40px 20px;
+      padding-top: 30px;
+      overflow-x: hidden;
 
       background:
-        radial-gradient(circle at 20% 20%, var(--day1), transparent 45%),
-        radial-gradient(circle at 80% 70%, var(--day2), transparent 45%),
-        linear-gradient(180deg, var(--night1), var(--night2));
-
-      animation: circadianCycle 14s ease-in-out infinite;
+        radial-gradient(circle at 20% 25%, #073806 0%, transparent 40%),
+        radial-gradient(circle at 80% 75%, #1a2a4a 0%, transparent 45%),
+        radial-gradient(circle at 50% 90%, #1c3b21 0%, transparent 40%),
+        linear-gradient(180deg, #111321 0%, #0b0d18 100%);
     }
 
-    @keyframes circadianCycle {
-      0% {
-        filter: hue-rotate(0deg) brightness(0.9);
-      }
-      25% {
-        filter: hue-rotate(10deg) brightness(1.05);
-      }
-      50% {
-        filter: hue-rotate(25deg) brightness(1.2);
-      }
-      75% {
-        filter: hue-rotate(10deg) brightness(1.05);
-      }
-      100% {
-        filter: hue-rotate(0deg) brightness(0.9);
-      }
+    /* 🌗 CONNECTED CIRCADIAN OVERLAY */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+
+      background:
+        radial-gradient(circle at 20% 30%, rgba(80,220,140,0.20), transparent 45%),
+        radial-gradient(circle at 80% 70%, rgba(80,120,255,0.18), transparent 50%);
+
+      animation: circadian 14s ease-in-out infinite;
     }
 
-    .section {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 14px;
-      margin-bottom: 14px;
-      overflow: hidden;
+    @keyframes circadian {
+      0%   { filter: brightness(0.9) hue-rotate(0deg); }
+      25%  { filter: brightness(1.05) hue-rotate(10deg); }
+      50%  { filter: brightness(1.2) hue-rotate(25deg); }
+      75%  { filter: brightness(1.05) hue-rotate(10deg); }
+      100% { filter: brightness(0.9) hue-rotate(0deg); }
     }
 
-    .header {
-      text-align: center;
-      margin-bottom: 30px;
+    /* NAVBAR */
+    nav {
+      margin-bottom: 45px;
     }
 
+    nav ul {
+      list-style: none;
+      padding: 0;
+
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+
+      border-bottom: 2px solid rgba(255,255,255,0.3);
+      padding-bottom: 10px;
+    }
+
+    nav li {
+      position: relative;
+      padding: 0 10px;
+    }
+
+    nav a {
+      color: #57c76a;
+      font-size: 20px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #39b54f;
+    }
+
+    /* TITLE */
     h1 {
-      font-size: 3rem;
-      background: linear-gradient(to right, #d7ffd1, #7dff8a);
+      font-size: 72px;
+      margin-bottom: 25px;
+
+      background: linear-gradient(to right, #daffd6, #75ed69, #40c433);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
+    /* INTRO */
+    .intro-box {
+      width: 78%;
+      margin: auto auto 70px auto;
+      padding: 35px;
+
+      background: rgba(255,255,255,0.05);
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(14px);
+
+      color: #ccc;
+      font-size: 18px;
+      line-height: 1.8;
+    }
+
+    /* DROPDOWN */
+    .section {
+      width: 85%;
+      margin: 18px auto;
+      border-radius: 14px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
     .section-header {
-      padding: 16px;
-      font-weight: bold;
+      padding: 18px;
       cursor: pointer;
+      font-weight: bold;
+      background: rgba(255,255,255,0.03);
     }
 
     .content {
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.4s ease;
-      padding: 0 16px;
-      white-space: pre-wrap;
-      line-height: 1.6;
-      color: #d7d7d7;
+      padding: 0 18px;
+      color: #ddd;
+      line-height: 1.7;
+      text-align: left;
     }
 
     .section.active .content {
-      max-height: 3000px;
-      padding-bottom: 16px;
+      max-height: 4000px;
+      padding-bottom: 18px;
     }
 
-    a {
-      color: #7dff8a;
-    }
-
+    /* FIGURES */
     .figure {
-      margin: 16px auto;
-      padding: 12px;
-      border: 1px solid rgba(255,255,255,0.12);
+      margin: 18px auto;
+      padding: 10px;
       border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.12);
       background: rgba(255,255,255,0.03);
       max-width: 650px;
       cursor: pointer;
-      transition: transform 0.2s ease;
-    }
-
-    .figure:hover {
-      transform: scale(1.01);
     }
 
     .figure img {
       width: 100%;
       border-radius: 10px;
-      display: block;
     }
 
     .caption {
       font-size: 13px;
+      text-align: center;
       color: #cfcfcf;
       margin-top: 6px;
-      text-align: center;
     }
 
     .fig-label {
+      text-align: center;
       font-weight: bold;
       color: #7dff8a;
       margin-bottom: 6px;
-      text-align: center;
     }
 
+    /* MODAL */
     .modal {
       display: none;
       position: fixed;
       z-index: 999;
-      left: 0;
-      top: 0;
       width: 100%;
       height: 100%;
+      top: 0;
+      left: 0;
       background: rgba(0,0,0,0.85);
       justify-content: center;
       align-items: center;
@@ -144,43 +190,57 @@
       max-height: 90%;
       border-radius: 12px;
     }
+
   </style>
 </head>
 
 <body>
 
-<div class="header">
-  <h1>Future Directions</h1>
+<nav>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="overview.html">Overview</a></li>
+    <li><a href="projects.html">Current and Past Projects</a></li>
+    <li><a href="genes.html">Genes</a></li>
+    <li><a href="considerations.html">Considerations</a></li>
+    <li><a href="futuredirections.html">Future Directions</a></li>
+    <li><a href="research.html">Research</a></li>
+  </ul>
+</nav>
+
+<h1>Future Directions</h1>
+
+<div class="intro-box">
+  Rosa’s Thoughts & Ideas: Drop down unfolding format
 </div>
 
-<!-- SECTION 1 -->
+<!-- 🌙 CIRCADIAN CONTROL -->
 <div class="section">
-  <div class="section-header">Section 1</div>
+  <div class="section-header">🌙 Circadian Control of Bioluminescence</div>
   <div class="content">
-Lingering question: How do we make trees light up only at night and control its bioluminescence?
 
-MIT engineers (<a href="https://news.mit.edu/2017/engineers-create-nanobionic-plants-that-glow-1213">MIT (2017)</a>) are planning to insert nanoparticles with luciferase inhibitors to “turn off” bioluminescence when desired
+Lingering question: How do we make the trees light up only at night and control its bioluminescence?
+
+MIT engineers (https://news.mit.edu/2017/engineers-create-nanobionic-plants-that-glow-1213) are planning on inserting nanoparticles with luciferase inhibitors to “turn off” bioluminescence when desired.
+
   </div>
 </div>
 
-<!-- SECTION 2 -->
+<!-- 🌿 CIRCADIAN SYSTEM -->
 <div class="section">
-  <div class="section-header">Section 2</div>
+  <div class="section-header">🌿 Plant Circadian System</div>
   <div class="content">
 
 Circadian system idea:
-- Can we use natural circadian rhythm systems so plants “glow” at night and not in the day?
-- Can luciferase be activated at certain times and inactivated at others → light, temperature, and other conditions
+- Can we utilize natural circadian rhythm systems in plants so plants “glow” at night?
 
-“Molecular clock” proteins can activate or inactivate fluorescent proteins like luciferase
-Specialized glands/organs that contain luciferase, oxygen, luciferin, hispidin, and components. Possibly in leaves
+“Molecular clock” proteins regulate gene activation/inactivation.
 
 <div class="figure" onclick="openModal('input.png')">
   <div class="fig-label">Figure 1</div>
   <img src="input.png">
   <div class="caption">
-    Circadian input regulation model
-    (<a href="https://www.sciencedirect.com/science/article/pii/S1534580702001843">McClung, 2002</a>)
+    Circadian input regulation system
   </div>
 </div>
 
@@ -188,82 +248,39 @@ Specialized glands/organs that contain luciferase, oxygen, luciferin, hispidin, 
   <div class="fig-label">Figure 2</div>
   <img src="night.png">
   <div class="caption">
-    Night-phase circadian gene expression and feedback loop
-    (<a href="https://www.science.org/doi/10.1126/science.1061320">Harmer, 2002</a>)
+    Night phase circadian gene network
   </div>
 </div>
 
   </div>
 </div>
 
-<!-- SECTION 3 -->
+<!-- 🧬 PROTEINS -->
 <div class="section">
-  <div class="section-header">Section 3</div>
+  <div class="section-header">🧬 Circadian Proteins</div>
   <div class="content">
 
-Circadian proteins:
-ZEITLUPE (ZTL): Blue-light photoreceptors regulating circadian clock and flowering
-
-CCA1, LHY, TOC1. CCA1 and LHY are morning transcription factors. TOC1 peaks in evening (https://www.science.org/doi/10.1126/science.1061320)
-
-DET1 protein may regulate circadian systems by repressing evening genes like CCA1/LHY
+ZEITLUPE (ZTL), CCA1, LHY, TOC1 regulate circadian timing.
 
 <div class="figure" onclick="openModal('DET1.png')">
   <div class="fig-label">Figure 3</div>
   <img src="DET1.png">
   <div class="caption">
-    DET1 protein regulatory complex
-    (<a href="https://www.cell.com/molecular-cell/fulltext/S1097-2765(11)00536-3">Lau et al., 2011</a>)
+    DET1 regulatory complex in Arabidopsis
   </div>
 </div>
 
   </div>
 </div>
 
-<!-- SECTION 4 -->
+<!-- ❓ QUESTIONS -->
 <div class="section">
-  <div class="section-header">Section 4</div>
+  <div class="section-header">❓ Open Questions</div>
   <div class="content">
 
-Questions Section:
+What makes an evening gene an “evening” gene?
 
-What makes an evening gene an “evening” gene and a morning gene a “morning” gene?
-
-Can ions control fluorescent genes? Ca2+, Mg2+, Fe2+ regulate circadian systems
-
-Mg2+ also acts as a cofactor in luciferase ATP reactions
-
-  </div>
-</div>
-
-<!-- SECTION 5 -->
-<div class="section">
-  <div class="section-header">Section 5</div>
-  <div class="content">
-
-Temperature and circadian rhythm:
-
-Clock genes including CCA1, LHY, GI, PRR7, PRR9 interact with temperature signals
-
-ELF3 acts as thermosensor; ELF3-GFP forms speckles under heat
-
-CCA1 and LHY regulate circadian systems via histone modification
-
-  </div>
-</div>
-
-<!-- SECTION 6 -->
-<div class="section">
-  <div class="section-header">Section 6</div>
-  <div class="content">
-
-Engineering transcription factor binding luciferase genes and circadian regulators
-
-How to make luciferase a “night” gene activated at night and repressed in morning?
-
-Altering promoters
-Alter clock gene promoters
-Methylation & acetylation(?)
+Can ions like Mg2+ or Ca2+ regulate luciferase activity?
 
   </div>
 </div>
@@ -274,20 +291,20 @@ Methylation & acetylation(?)
 </div>
 
 <script>
-  document.querySelectorAll('.section').forEach(section => {
-    section.querySelector('.section-header').addEventListener('click', () => {
-      section.classList.toggle('active');
-    });
+document.querySelectorAll('.section').forEach(section => {
+  section.querySelector('.section-header').addEventListener('click', () => {
+    section.classList.toggle('active');
   });
+});
 
-  function openModal(src) {
-    document.getElementById('modal').style.display = 'flex';
-    document.getElementById('modalImg').src = src;
-  }
+function openModal(src) {
+  document.getElementById('modal').style.display = 'flex';
+  document.getElementById('modalImg').src = src;
+}
 
-  function closeModal() {
-    document.getElementById('modal').style.display = 'none';
-  }
+function closeModal() {
+  document.getElementById('modal').style.display = 'none';
+}
 </script>
 
 </body>
