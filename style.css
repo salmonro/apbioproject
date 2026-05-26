@@ -101,7 +101,7 @@ nav a::after {
 }
 
 nav a:hover::after {
-  width: 70%;
+  width: 35%;
 }
 
 /* Hero Section */
