@@ -3,9 +3,11 @@
 
 <head>
   <title>Bioluminescent Plants</title>
+
   <link rel="stylesheet" href="style.css">
 
   <style>
+
     body {
       margin: 0;
       overflow-x: hidden;
@@ -21,27 +23,185 @@
 
       min-height: 100vh;
       padding-top: 30px;
-      
+
+      position: relative;
     }
 
-  
+    /* NAVBAR */
 
-    /* HERO — compact */
-    .hero {
-      margin-top: 20px;
-      margin-bottom: 60px;
-      padding-top: 0;
+    nav {
+      margin-bottom: 45px;
+      position: relative;
+      z-index: 100;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
 
       display: flex;
-      flex-direction: column;
-      align-items: center;
+      justify-content: center;
+      gap: 30px;
+
+      flex-wrap: wrap;
+
+      border-bottom: 2px solid rgba(255,255,255,0.3);
+      padding-bottom: 10px;
+    }
+
+    nav li {
+      position: relative;
+      padding: 0 10px;
+    }
+
+    nav li::after {
+      content: '';
+
+      position: absolute;
+
+      bottom: -10px;
+      left: 0;
+
+      width: 100%;
+      height: 2px;
+
+      background: rgba(49, 204, 76, 0.6);
+
+      border-radius: 1px;
+      opacity: 0.6;
+    }
+
+    nav a {
+      color: #57c76a;
+      font-size: 20px;
+      text-decoration: none;
+      font-weight: bold;
+
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #39b54f;
+    }
+
+    /* DARK FOREST */
+
+    .forest {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+
+      width: 100%;
+      height: 320px;
+
+      z-index: 0;
+      pointer-events: none;
+
+      overflow: hidden;
+    }
+
+    .tree {
+      position: absolute;
+      bottom: -350px;
+
+      opacity: 0;
+
+      animation:
+        riseUp 2s forwards,
+        sway 5s ease-in-out infinite;
+
+      filter:
+        drop-shadow(0 0 12px rgba(80,255,120,0.12));
+    }
+
+    .tree:nth-child(1) {
+      left: -2%;
+      width: 240px;
+      animation-delay: 0s;
+    }
+
+    .tree:nth-child(2) {
+      left: 10%;
+      width: 290px;
+      animation-delay: 0.3s;
+    }
+
+    .tree:nth-child(3) {
+      left: 24%;
+      width: 230px;
+      animation-delay: 0.6s;
+    }
+
+    .tree:nth-child(4) {
+      left: 38%;
+      width: 320px;
+      animation-delay: 0.9s;
+    }
+
+    .tree:nth-child(5) {
+      left: 55%;
+      width: 260px;
+      animation-delay: 1.2s;
+    }
+
+    .tree:nth-child(6) {
+      left: 70%;
+      width: 310px;
+      animation-delay: 1.5s;
+    }
+
+    .tree:nth-child(7) {
+      left: 85%;
+      width: 240px;
+      animation-delay: 1.8s;
+    }
+
+    @keyframes riseUp {
+
+      0% {
+        transform: translateY(250px) scale(0.85);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translateY(0px) scale(1);
+        opacity: 0.85;
+      }
+
+    }
+
+    @keyframes sway {
+
+      0% {
+        transform: rotate(0deg);
+      }
+
+      50% {
+        transform: rotate(1deg);
+      }
+
+      100% {
+        transform: rotate(0deg);
+      }
+
+    }
+
+    /* HERO */
+
+    .hero {
+      margin-top: 40px;
+      margin-bottom: 70px;
+
+      position: relative;
+      z-index: 5;
     }
 
     h1 {
-      font-size: 70px;
-      margin: 0 0 5px 0;
+      font-size: 82px;
+      margin-bottom: 12px;
 
       background: linear-gradient(to right, #daffd6, #75ed69, #40c433);
+
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
 
@@ -49,15 +209,21 @@
         0 0 8px rgba(55, 214, 88, 0.8),
         0 0 18px rgba(55, 214, 88, 0.6),
         0 0 32px rgba(55, 214, 88, 0.4);
+
+      animation: titleGlow 1.2s ease forwards;
     }
 
     .subtitle {
-      font-size: 22px;
-      color: #ccc;
-      margin-bottom: 30px;
+      font-size: 23px;
+      color: #cfcfcf;
+
+      margin-bottom: 40px;
+
+      letter-spacing: 0.5px;
     }
 
-    /* Buttons */
+    /* BUTTONS */
+
     .buttons {
       display: flex;
       justify-content: center;
@@ -68,74 +234,250 @@
     .main-btn {
       background: #75ed69;
       color: white;
+
       padding: 14px 30px;
-      border-radius: 8px;
+
+      border-radius: 10px;
+
       text-decoration: none;
       font-weight: bold;
-      box-shadow: 0 0 15px rgba(46, 230, 50, 0.6);
+
+      box-shadow:
+        0 0 18px rgba(46,230,50,0.55);
+
       transition: all 0.3s;
     }
 
     .main-btn:hover {
-      box-shadow: 0 0 25px rgba(46, 230, 50, 1);
+      transform: translateY(-3px);
+
+      box-shadow:
+        0 0 30px rgba(46,230,50,0.95);
     }
 
     .secondary-btn {
       border: 2px solid #75ed69;
       color: #75ed69;
+
       padding: 12px 28px;
-      border-radius: 8px;
+
+      border-radius: 10px;
+
       text-decoration: none;
       font-weight: bold;
+
       transition: all 0.3s;
     }
 
     .secondary-btn:hover {
       background: #75ed69;
       color: white;
+
+      box-shadow:
+        0 0 20px rgba(46,230,50,0.45);
     }
 
-    /* Features */
+    /* FEATURE SECTION */
+
     .features {
       display: flex;
       justify-content: center;
-      gap: 40px;
+      gap: 38px;
+
       flex-wrap: wrap;
-      margin-bottom: 80px;
-      width: 100%;
-      max-width: 1200px;
+
+      width: 92%;
+      max-width: 1300px;
+
+      margin:
+        0 auto
+        120px auto;
+
+      position: relative;
+      z-index: 5;
     }
 
+    /* CARDS */
+
     .card {
-      width: 260px;
+      position: relative;
+
+      width: 280px;
+      min-height: 250px;
+
+      background: rgba(255,255,255,0.04);
+
+      border-radius: 22px;
+
+      border: 1px solid rgba(255,255,255,0.08);
+
+      backdrop-filter: blur(14px);
+
+      overflow: hidden;
+
+      transition: all 0.35s;
+
+      text-align: left;
+
       padding: 30px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(12px);
-      transition: all 0.3s;
+      box-sizing: border-box;
     }
 
     .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 0 25px rgba(46, 230, 50, 0.35);
+      transform: translateY(-10px) scale(1.02);
+
+      box-shadow:
+        0 0 30px rgba(70,255,120,0.25);
+    }
+
+    .card-glow {
+      position: absolute;
+
+      width: 220px;
+      height: 220px;
+
+      border-radius: 50%;
+
+      top: -80px;
+      right: -80px;
+
+      background:
+        radial-gradient(circle,
+        rgba(90,255,120,0.18) 0%,
+        transparent 70%);
+
+      pointer-events: none;
     }
 
     .card h2 {
       color: #75ed69;
-      margin-bottom: 10px;
+
+      font-size: 28px;
+
+      margin-bottom: 16px;
+
+      line-height: 1.2;
+
+      position: relative;
+      z-index: 2;
     }
 
     .card p {
-      color: #bbb;
+      color: #d0d0d0;
+
       font-size: 16px;
-      line-height: 1.5;
+
+      line-height: 1.7;
+
+      position: relative;
+      z-index: 2;
     }
 
-    /* Responsive */
-    @media screen and (max-width: 768px) {
+    /* FIREFLY PARTICLES */
+
+    .firefly {
+      position: fixed;
+
+      width: 5px;
+      height: 5px;
+
+      background: #8dff9d;
+
+      border-radius: 50%;
+
+      box-shadow:
+        0 0 10px #8dff9d,
+        0 0 18px #8dff9d;
+
+      opacity: 0.6;
+
+      animation:
+        floatFly linear infinite;
+    }
+
+    .firefly:nth-child(1) {
+      left: 10%;
+      animation-duration: 12s;
+      animation-delay: 0s;
+    }
+
+    .firefly:nth-child(2) {
+      left: 25%;
+      animation-duration: 15s;
+      animation-delay: 3s;
+    }
+
+    .firefly:nth-child(3) {
+      left: 42%;
+      animation-duration: 13s;
+      animation-delay: 2s;
+    }
+
+    .firefly:nth-child(4) {
+      left: 63%;
+      animation-duration: 18s;
+      animation-delay: 5s;
+    }
+
+    .firefly:nth-child(5) {
+      left: 82%;
+      animation-duration: 16s;
+      animation-delay: 1s;
+    }
+
+    @keyframes floatFly {
+
+      0% {
+        transform: translateY(100vh) translateX(0px);
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 0.7;
+      }
+
+      50% {
+        transform: translateY(45vh) translateX(30px);
+      }
+
+      100% {
+        transform: translateY(-20vh) translateX(-20px);
+        opacity: 0;
+      }
+
+    }
+
+    /* TITLE ANIMATION */
+
+    @keyframes titleGlow {
+
+      0% {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0px);
+      }
+
+    }
+
+    /* MOBILE */
+
+    @media screen and (max-width:768px) {
+
       h1 {
-        font-size: 48px;
+        font-size: 54px;
+      }
+
+      .subtitle {
+        font-size: 19px;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 15px;
       }
 
       .features {
@@ -143,17 +485,38 @@
         align-items: center;
       }
 
-      nav ul {
-        flex-direction: column;
-        gap: 15px;
+      .card {
+        width: 92%;
       }
+
+      .forest {
+        height: 220px;
+      }
+
+      .tree {
+        width: 180px !important;
+      }
+
     }
+
   </style>
+
 </head>
 
 <body>
 
+  <!-- FLOATING FIREFLIES -->
+
+  <div class="firefly"></div>
+  <div class="firefly"></div>
+  <div class="firefly"></div>
+  <div class="firefly"></div>
+  <div class="firefly"></div>
+
+  <!-- NAVBAR -->
+
   <nav>
+
     <ul>
       <li><a href="index.html">Home</a></li>
       <li><a href="overview.html">Overview</a></li>
@@ -163,34 +526,89 @@
       <li><a href="futuredirections.html">Future Directions</a></li>
       <li><a href="research.html">Research</a></li>
     </ul>
+
   </nav>
 
-  <canvas id="dnaCanvas"></canvas>
+  <!-- HERO -->
 
   <div class="hero">
+
     <h1>Bioluminescent Plants</h1>
-    <p class="subtitle">A captivating solution for artificial lights and energy waste.</p>
+
+    <p class="subtitle">
+      A captivating solution for artificial lights and energy waste.
+    </p>
 
     <div class="buttons">
-      <a href="overview.html" class="main-btn">Overview</a>
-      <a href="projects.html" class="secondary-btn">Current and Past Projects</a>
+
+      <a href="overview.html" class="main-btn">
+        Overview
+      </a>
+
+      <a href="projects.html" class="secondary-btn">
+        Current and Past Projects
+      </a>
+
     </div>
+
   </div>
 
+  <!-- FEATURE CARDS -->
+
   <div class="features">
+
     <div class="card">
+
+      <div class="card-glow"></div>
+
       <h2>Overview</h2>
-      <p>Bioluminescent plants: How are they engineered?</p>
+
+      <p>
+        Bioluminescent plants: How are they engineered?
+      </p>
+
     </div>
+
     <div class="card">
+
+      <div class="card-glow"></div>
+
       <h2>Current and Past Projects</h2>
-      <p>Explore projects currently underway and organizations investigating bioluminescent plants.</p>
+
+      <p>
+        Explore projects currently underway and organizations investigating bioluminescent plants.
+      </p>
+
     </div>
+
     <div class="card">
+
+      <div class="card-glow"></div>
+
       <h2>Genes</h2>
-      <p>Genes of interest being researched for plant bioluminescence.</p>
+
+      <p>
+        Genes of interest being researched for plant bioluminescence.
+      </p>
+
     </div>
+
+  </div>
+
+  <!-- FOREST -->
+
+  <div class="forest">
+
+    <img class="tree" src="tree silhouette.png" alt="Tree">
+    <img class="tree" src="tree silhouette.png" alt="Tree">
+    <img class="tree" src="tree silhouette.png" alt="Tree">
+    <img class="tree" src="tree silhouette.png" alt="Tree">
+    <img class="tree" src="tree silhouette.png" alt="Tree">
+    <img class="tree" src="tree silhouette.png" alt="Tree">
+    <img class="tree" src="tree silhouette.png" alt="Tree">
+
   </div>
 
 </body>
+
 </html>
