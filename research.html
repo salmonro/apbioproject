@@ -59,7 +59,7 @@
     /* TITLE */
     h1 {
       font-size: 72px;
-      margin-bottom: 25px;
+      margin-bottom: 40px;
 
       background: linear-gradient(to right, #daffd6, #75ed69, #40c433);
       -webkit-background-clip: text;
@@ -78,67 +78,49 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* INTRO */
-    .intro-box {
-      width: 78%;
-      margin: auto auto 35px auto;
-      padding: 35px;
-
-      background: rgba(255,255,255,0.05);
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,0.08);
-      backdrop-filter: blur(14px);
-
-      color: #ccc;
-      font-size: 18px;
-      line-height: 1.8;
-
-      animation: fadeInUp 0.9s ease forwards;
-    }
-
-    /* IMAGE STRIP */
+    /* IMAGE STRIP (NOW HERO STYLE) */
     .image-strip {
-      width: 90%;
-      margin: 35px auto 70px auto;
+      width: 92%;
+      margin: 20px auto 80px auto;
 
       display: flex;
       justify-content: center;
-      gap: 22px;
+      gap: 24px;
       flex-wrap: wrap;
     }
 
     .image-item {
       position: relative;
-      transition: all 0.3s ease;
     }
 
+    /* BIGGER IMAGES */
     .image-item img {
-      width: 240px;
-      height: 160px;
+      width: 280px;
+      height: 200px;
       object-fit: cover;
 
-      border-radius: 14px;
+      border-radius: 16px;
 
       border: 1px solid rgba(255,255,255,0.12);
 
-      box-shadow: 0 0 18px rgba(55, 214, 88, 0.18);
+      box-shadow: 0 0 22px rgba(55, 214, 88, 0.22);
 
       transition: all 0.3s ease;
     }
 
-    .image-item:hover img {
-      transform: translateY(-6px) scale(1.04);
-      box-shadow: 0 0 28px rgba(55, 214, 88, 0.35);
+    .image-item img:hover {
+      transform: translateY(-8px) scale(1.05);
+      box-shadow: 0 0 35px rgba(55, 214, 88, 0.4);
     }
 
-    /* BLUE REF NUMBERS */
+    /* BLUE REFERENCE NUMBERS */
     .ref-num {
       position: absolute;
       top: 8px;
       left: 8px;
 
-      width: 24px;
-      height: 24px;
+      width: 26px;
+      height: 26px;
 
       display: flex;
       align-items: center;
@@ -154,7 +136,7 @@
 
       text-decoration: none;
 
-      box-shadow: 0 0 10px rgba(90,170,255,0.6);
+      box-shadow: 0 0 12px rgba(90,170,255,0.6);
 
       transition: all 0.2s ease;
     }
@@ -162,7 +144,7 @@
     .ref-num:hover {
       transform: scale(1.15);
       background: rgba(120, 200, 255, 1);
-      box-shadow: 0 0 16px rgba(120,200,255,0.9);
+      box-shadow: 0 0 18px rgba(120,200,255,0.9);
     }
 
     /* DOC BOX */
@@ -224,11 +206,7 @@
 
   <h1>Research</h1>
 
-  <div class="intro-box">
-    Check out some interesting papers (on bioluminescence) with short synopses and cool facts!
-  </div>
-
-  <!-- IMAGE STRIP -->
+  <!-- IMAGE HERO STRIP -->
   <div class="image-strip">
 
     <div class="image-item">
