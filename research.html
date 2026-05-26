@@ -24,7 +24,7 @@
       overflow-x: hidden;
     }
 
-    /* floating glow like overview */
+    /* floating glow */
     body::before,
     body::after {
       content: "";
@@ -56,6 +56,7 @@
       to { transform: translateY(40px) scale(1.1); }
     }
 
+    /* TITLE */
     h1 {
       font-size: 72px;
       margin-bottom: 25px;
@@ -77,10 +78,10 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* INTRO BOX */
+    /* INTRO */
     .intro-box {
       width: 78%;
-      margin: auto auto 40px auto;
+      margin: auto auto 35px auto;
       padding: 35px;
 
       background: rgba(255,255,255,0.05);
@@ -97,46 +98,47 @@
 
     /* IMAGE STRIP */
     .image-strip {
-      width: 85%;
-      margin: 30px auto 60px auto;
+      width: 90%;
+      margin: 35px auto 70px auto;
 
       display: flex;
       justify-content: center;
-      gap: 18px;
+      gap: 22px;
       flex-wrap: wrap;
     }
 
     .image-item {
       position: relative;
+      transition: all 0.3s ease;
     }
 
     .image-item img {
-      width: 180px;
-      height: 120px;
+      width: 240px;
+      height: 160px;
       object-fit: cover;
 
-      border-radius: 12px;
+      border-radius: 14px;
 
       border: 1px solid rgba(255,255,255,0.12);
 
-      box-shadow: 0 0 18px rgba(55, 214, 88, 0.15);
+      box-shadow: 0 0 18px rgba(55, 214, 88, 0.18);
 
       transition: all 0.3s ease;
     }
 
-    .image-item img:hover {
-      transform: translateY(-6px) scale(1.05);
-      box-shadow: 0 0 25px rgba(55, 214, 88, 0.35);
+    .image-item:hover img {
+      transform: translateY(-6px) scale(1.04);
+      box-shadow: 0 0 28px rgba(55, 214, 88, 0.35);
     }
 
-    /* BLUE REFERENCE NUMBERS */
+    /* BLUE REF NUMBERS */
     .ref-num {
       position: absolute;
-      top: 6px;
-      left: 6px;
+      top: 8px;
+      left: 8px;
 
-      width: 22px;
-      height: 22px;
+      width: 24px;
+      height: 24px;
 
       display: flex;
       align-items: center;
@@ -144,7 +146,7 @@
 
       border-radius: 50%;
 
-      background: rgba(90, 170, 255, 0.9);
+      background: rgba(90, 170, 255, 0.92);
       color: white;
 
       font-size: 12px;
@@ -160,10 +162,10 @@
     .ref-num:hover {
       transform: scale(1.15);
       background: rgba(120, 200, 255, 1);
-      box-shadow: 0 0 14px rgba(120,200,255,0.9);
+      box-shadow: 0 0 16px rgba(120,200,255,0.9);
     }
 
-    /* BUTTON SECTION */
+    /* DOC BOX */
     .doc-box {
       width: 78%;
       margin: auto auto 120px auto;
@@ -251,7 +253,7 @@
 
   </div>
 
-  <!-- GOOGLE DOC BUTTON -->
+  <!-- DOC BOX -->
   <div class="doc-box">
     <h2>Master Doc</h2>
     <p>Check out some interesting papers (on bioluminescence) with short synopses/cool facts!</p>
