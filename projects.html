@@ -24,7 +24,6 @@
       overflow-x: hidden;
     }
 
-    /* floating ambient blobs (same as overview) */
     body::before,
     body::after {
       content: "";
@@ -73,7 +72,7 @@
       animation: fadeInUp 0.8s ease forwards;
     }
 
-    /* Cards container */
+    /* GRID */
     .guides-container {
       display: flex;
       justify-content: center;
@@ -85,6 +84,8 @@
     /* CARD */
     .guide-card {
       width: 600px;
+      min-height: 260px;
+
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -98,21 +99,22 @@
 
       backdrop-filter: blur(14px);
 
-      transition: all 0.35s ease;
-
       text-align: left;
 
+      transition: all 0.35s ease;
+
+      /* FIX: prevents clipping + enables reveal */
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(25px);
       animation: fadeInUp 0.8s ease forwards;
     }
 
-    /* stagger like overview */
-    .guide-card:nth-child(1) { animation-delay: 0.15s; }
-    .guide-card:nth-child(2) { animation-delay: 0.3s; }
+    .guide-card:nth-child(2) {
+      animation-delay: 0.15s;
+    }
 
     .guide-card:hover {
-      transform: translateY(-8px) scale(1.01);
+      transform: translateY(-8px);
       box-shadow: 0 0 25px rgba(55, 214, 88, 0.35);
     }
 
@@ -161,6 +163,7 @@
       font-weight: bold;
 
       box-shadow: 0 0 15px rgba(55, 214, 88, 0.6);
+
       transition: all 0.3s;
     }
 
@@ -169,11 +172,11 @@
       box-shadow: 0 0 25px rgba(55, 214, 88, 1);
     }
 
-    /* ANIMATION (SAME AS OVERVIEW) */
+    /* ANIMATION */
     @keyframes fadeInUp {
       from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(25px);
       }
       to {
         opacity: 1;
@@ -185,7 +188,7 @@
     @media screen and (max-width:768px) {
 
       h1 {
-        font-size: 50px;
+        font-size: 48px;
       }
 
       .guides-container {
@@ -216,11 +219,11 @@
 
 </head>
 
-<body>
+<body data-page="studyguides">
 
 <nav>
   <ul>
-    <li><a href="index.html">Home</a></li>
+     <li><a href="index.html">Home</a></li>
     <li><a href="overview.html">Overview</a></li>
     <li><a href="projects.html">Current and Past Projects</a></li>
     <li><a href="genes.html">Genes</a></li>
@@ -238,8 +241,9 @@
 
     <div class="card-content">
       <h2>Light Bio</h2>
+
       <p>
-        LightBio sells bioluminescent plants featured on TIME Best Inventions of 2024...
+        LightBio sells bioluminescent plants featured on TIME Best Inventions of 2024. The company engineers glowing petunias--a type of flower-- by introducing four genes from a bioluminescent mushroom and a fifth gene from fungi into the flower. 
       </p>
 
       <a href="https://light.bio/?srsltid=AfmBOorNCK0HzvQUMNzmnxAu2SzDWaCtN6ujWsZsHLunSIAgh1n4mokr" target="_blank">
@@ -255,8 +259,9 @@
 
     <div class="card-content">
       <h2>MIT Nanobionic Plants</h2>
+
       <p>
-        MIT embedded plants with nanoparticles containing luciferase...
+        Instead of directly introducing genes, MIT embedded plants with nanoparticles containing luciferase, an enzyme that catalyzes a light-producing reaction, and other necessary ingredients. For greater control, the glowing plants can be turned off by adding nanoparticles with a luciferase inhibitor and necessary components.
       </p>
 
       <a href="https://news.mit.edu/2017/engineers-create-nanobionic-plants-that-glow-1213" target="_blank">
