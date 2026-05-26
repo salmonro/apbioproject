@@ -21,25 +21,24 @@
 
       min-height: 100vh;
       padding-top: 0px;
-
-      /* ADDED: smooth parallax support */
-      background-attachment: fixed;
-      transition: background-position 0.2s ease-out;
     }
 
-    /* ===== FADE-IN REVEAL (ADDED) ===== */
-    .reveal {
+    /* ===== FADE REVEAL SYSTEM ===== */
+
+    .reveal, .title-reveal {
       opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(25px);
       transition: all 0.9s ease;
     }
 
-    .reveal.active {
+    .reveal.active,
+    .title-reveal.active {
       opacity: 1;
       transform: translateY(0);
     }
 
     /* TITLE */
+
     h1 {
       font-size: 72px;
       margin-bottom: 25px;
@@ -56,6 +55,7 @@
     }
 
     /* INTRO */
+
     .intro-box {
       width: 78%;
       margin: auto auto 70px auto;
@@ -69,11 +69,10 @@
       color: #ccc;
       font-size: 18px;
       line-height: 1.8;
-
-      transition: transform 0.6s ease, opacity 0.6s ease;
     }
 
     /* GRID */
+
     .considerations-grid {
       display: flex;
       justify-content: center;
@@ -84,6 +83,7 @@
     }
 
     /* CARDS */
+
     .consideration-card {
       position: relative;
       width: 340px;
@@ -96,13 +96,10 @@
       overflow: hidden;
 
       transition: all 0.35s;
-
       text-align: left;
 
-      /* ADDED */
       opacity: 0;
       transform: translateY(25px);
-      transition: all 0.8s ease;
     }
 
     .consideration-card.active {
@@ -114,11 +111,14 @@
       transform: translateY(-10px) scale(1.02);
     }
 
-    /* your existing styles unchanged below */
+    /* GLOW EFFECTS */
+
     .species:hover { box-shadow: 0 0 30px rgba(120,200,255,0.28); }
     .metabolic:hover { box-shadow: 0 0 30px rgba(255,180,90,0.28); }
     .brightness:hover { box-shadow: 0 0 30px rgba(70,255,120,0.28); }
     .ecology:hover { box-shadow: 0 0 30px rgba(255,110,110,0.28); }
+
+    /* BACKGROUND SYMBOLS */
 
     .bg-symbol {
       position: absolute;
@@ -134,6 +134,8 @@
       opacity: 0.12;
       transform: scale(1.08);
     }
+
+    /* CONTENT */
 
     .card-content {
       position: relative;
@@ -170,6 +172,8 @@
       text-shadow: 0 0 10px rgba(100,255,120,0.8);
     }
 
+    /* STATUS TAGS */
+
     .status {
       display: inline-block;
       margin-bottom: 18px;
@@ -202,7 +206,7 @@
     </ul>
   </nav>
 
-  <h1>Considerations</h1>
+  <h1 class="title-reveal">Considerations</h1>
 
   <div class="intro-box reveal">
     Engineering bioluminescent plants requires balancing gene expression, metabolic regulation, ecological interactions, and brightness optimization. 
@@ -232,7 +236,7 @@
         <ul>
           <li>Light generation requires constant energy, so natural metabolic cycles may be disrupted</li>
           <li>In order for plants to glow in the night, We would have to engineer ATP generating cycles to run continuously in the night even without input from glucose or other energy sources</li>
-          <li>Bioluminescence depends on enzymes and and cellular energy flux, which can hinder endogenous growth pathways</li>
+          <li>Bioluminescence depends on enzymes and cellular energy flux</li>
         </ul>
       </div>
     </div>
@@ -243,9 +247,9 @@
         <span class="status green">OPTIMIZATION</span>
         <h2>Brightness levels and customization</h2>
         <ul>
-          <li>Glowing plants must emit immense amounts of lumens to reach the brightness of traditional street lights</li>
+          <li>Glowing plants must emit immense amounts of lumens</li>
           <li>Modifying the color of the glow: a future direction</li>
-          <li>Recent strategies include using bioluminescence resonance energy transfer (BRET) to shift the wavelengths of emissions</li>
+          <li>BRET-based wavelength shifting strategies</li>
         </ul>
       </div>
     </div>
@@ -256,17 +260,16 @@
         <span class="status red">ECOLOGICAL RISK</span>
         <h2>Ecological concerns</h2>
         <ul>
-          <li>Constant light emission in the night can attract pollinators and disrupt their natural feeding cycles</li>
-          <li>Important to ensure that pollinators can distinguish between natural light and bioluminescence from the plants</li>
+          <li>Constant light emission can affect pollinators</li>
+          <li>Need to distinguish natural vs engineered light signals</li>
         </ul>
       </div>
     </div>
 
   </div>
 
-  <!-- ===== JS: FADE + PARALLAX (ADDED) ===== -->
   <script>
-    const reveals = document.querySelectorAll('.reveal');
+    const reveals = document.querySelectorAll('.reveal, .title-reveal');
 
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -278,7 +281,7 @@
 
     reveals.forEach(el => observer.observe(el));
 
-    // subtle parallax background
+    // subtle parallax (optional but matching overview feel)
     window.addEventListener('scroll', () => {
       const y = window.scrollY;
       document.body.style.backgroundPosition = `
