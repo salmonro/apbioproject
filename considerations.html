@@ -21,6 +21,52 @@
 
       min-height: 100vh;
       padding-top: 0px;
+
+      overflow-x: hidden;
+    }
+
+    /* ================= ADDED: floating ambient glow ================= */
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      filter: blur(120px);
+      z-index: -1;
+      opacity: 0.22;
+      animation: floatGlow 14s ease-in-out infinite alternate;
+    }
+
+    body::before {
+      background: #2cff7a;
+      top: -120px;
+      left: -120px;
+    }
+
+    body::after {
+      background: #3b82f6;
+      bottom: -140px;
+      right: -140px;
+      animation-delay: 3s;
+    }
+
+    @keyframes floatGlow {
+      from { transform: translateY(0px) scale(1); }
+      to { transform: translateY(45px) scale(1.1); }
+    }
+
+    /* ================= ADDED: scroll reveal ================= */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     /* TITLE */
@@ -55,6 +101,14 @@
       color: #ccc;
       font-size: 18px;
       line-height: 1.8;
+
+      /* ADDED */
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .intro-box:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 25px rgba(55,214,88,0.2);
     }
 
     /* GRID */
@@ -78,12 +132,13 @@
       background: rgba(255,255,255,0.04);
       border-radius: 22px;
       border: 1px solid rgba(255,255,255,0.08);
-
       backdrop-filter: blur(14px);
-      overflow: hidden;
 
-      transition: all 0.35s;
+      overflow: hidden;
       text-align: left;
+
+      /* ADDED FLOAT */
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
 
     .consideration-card:hover {
@@ -92,21 +147,10 @@
 
     /* GLOW EFFECTS */
 
-    .species:hover {
-      box-shadow: 0 0 30px rgba(120,200,255,0.28);
-    }
-
-    .metabolic:hover {
-      box-shadow: 0 0 30px rgba(255,180,90,0.28);
-    }
-
-    .brightness:hover {
-      box-shadow: 0 0 30px rgba(70,255,120,0.28);
-    }
-
-    .ecology:hover {
-      box-shadow: 0 0 30px rgba(255,110,110,0.28);
-    }
+    .species:hover { box-shadow: 0 0 30px rgba(120,200,255,0.28); }
+    .metabolic:hover { box-shadow: 0 0 30px rgba(255,180,90,0.28); }
+    .brightness:hover { box-shadow: 0 0 30px rgba(70,255,120,0.28); }
+    .ecology:hover { box-shadow: 0 0 30px rgba(255,110,110,0.28); }
 
     /* BACKGROUND SYMBOLS */
 
@@ -184,29 +228,18 @@
     /* MOBILE */
 
     @media screen and (max-width:768px) {
-
-      h1 {
-        font-size: 50px;
-      }
+      h1 { font-size: 50px; }
 
       nav ul {
         flex-direction: column;
         gap: 15px;
       }
 
-      .intro-box {
-        width: 88%;
-        padding: 28px;
-      }
-
-      .consideration-card {
-        width: 92%;
-      }
-
+      .intro-box { width: 88%; padding: 28px; }
+      .consideration-card { width: 92%; }
     }
 
   </style>
-
 </head>
 
 <body>
@@ -225,13 +258,14 @@
 
   <h1>Considerations</h1>
 
-  <div class="intro-box">
-    Engineering bioluminescent plants requires balancing gene expression, metabolic regulation, ecological interactions, and brightness optimization. Here are some considerations yet to be resolved, and some solutions underway.
+  <div class="intro-box reveal">
+    Engineering bioluminescent plants requires balancing gene expression, metabolic regulation, ecological interactions, and brightness optimization. 
+    Here are some considerations yet to be resolved, and some solutions underway.
   </div>
 
   <div class="considerations-grid">
 
-    <div class="consideration-card species">
+    <div class="consideration-card species reveal">
       <div class="bg-symbol">🧬</div>
       <div class="card-content">
         <span class="status blue">GENETIC VARIABILITY</span>
@@ -244,7 +278,7 @@
       </div>
     </div>
 
-    <div class="consideration-card metabolic">
+    <div class="consideration-card metabolic reveal">
       <div class="bg-symbol">⚡</div>
       <div class="card-content">
         <span class="status orange">HIGH ENERGY COST</span>
@@ -252,31 +286,31 @@
         <ul>
           <li>Light generation requires constant energy, so natural metabolic cycles may be disrupted</li>
           <li>In order for plants to glow in the night, We would have to engineer ATP generating cycles to run continuously in the night even without input from glucose or other energy sources</li>
-          <li>Bioluminescence depends on enzymes and cellular energy flux, which can hinder endogenous growth pathways (Mitiouchkina et al., 2021)</li>
+          <li>Bioluminescence depends on enzymes and and cellular energy flux, which can hinder endogenous growth pathways ( <a href="https://pubmed.ncbi.nlm.nih.gov/34251679/" target="_blank"> Mitiouchkina et al., 2021 </a>)</li>
         </ul>
       </div>
     </div>
 
-    <div class="consideration-card brightness">
+    <div class="consideration-card brightness reveal">
       <div class="bg-symbol">💡</div>
       <div class="card-content">
         <span class="status green">OPTIMIZATION</span>
         <h2>Brightness levels and customization</h2>
         <ul>
-          <li>Glowing plants must emit immense amounts of lumens to reach the brightness of traditional street lights (Reeve et al., 2014)</li>
+          <li>Glowing plants must emit immense amounts of lumens to reach the brightness of traditional street lights ( <a href="https://link.springer.com/chapter/10.1007/978-3-662-43619-6_1" target="_blank"> Reeve et al., 2014 </a>)</li>
           <li>Modifying the color of the glow: a future direction</li>
-          <li>Recent strategies include using bioluminescence resonance energy transfer (BRET) to shift wavelengths (Tsuboi and Jin, 2019)</li>
+          <li>Recent strategies include using bioluminescence resonance energy transfer (BRET) to shift the wavelengths of emissions ( <a href="https://pubmed.ncbi.nlm.nih.gov/35530680/" target="_blank"> Tsuboi and Jin, 2019 </a>)</li>
         </ul>
       </div>
     </div>
 
-    <div class="consideration-card ecology">
+    <div class="consideration-card ecology reveal">
       <div class="bg-symbol">🌎</div>
       <div class="card-content">
         <span class="status red">ECOLOGICAL RISK</span>
         <h2>Ecological concerns</h2>
         <ul>
-          <li>Constant light emission in the night can attract pollinators and disrupt their natural feeding cycles (Knop et al., 2017)</li>
+          <li>Constant light emission in the night can attract pollinators and disrupt their natural feeding cycles ( <a href="https://pubmed.ncbi.nlm.nih.gov/29181445/" target="_blank"> Knop et al., 2017 </a>)</li>
           <li>Important to ensure that pollinators can distinguish between natural light and bioluminescence from the plants</li>
         </ul>
       </div>
@@ -284,6 +318,25 @@
 
   </div>
 
-</body>
+<script>
+  // scroll reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+      }
+    });
+  });
 
+  document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+  // subtle parallax
+  document.addEventListener("mousemove", (e) => {
+    const x = (e.clientX / window.innerWidth - 0.5) * 10;
+    const y = (e.clientY / window.innerHeight - 0.5) * 10;
+    document.body.style.backgroundPosition = `${x}px ${y}px`;
+  });
+</script>
+
+</body>
 </html>
