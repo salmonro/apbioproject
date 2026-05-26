@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Research</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+
+    body {
+      margin: 0;
+      font-family: 'Rubik', Arial, sans-serif;
+      text-align: center;
+      color: white;
+
+      background:
+        radial-gradient(circle at 20% 25%, rgba(7,56,6,0.7) 0%, transparent 40%),
+        radial-gradient(circle at 80% 75%, rgba(26,42,74,0.7) 0%, transparent 45%),
+        radial-gradient(circle at 50% 90%, rgba(28,59,33,0.6) 0%, transparent 40%),
+        linear-gradient(180deg, #0b0d18 0%, #05060c 100%);
+
+      min-height: 100vh;
+      padding-top: 0px;
+      overflow-x: hidden;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      filter: blur(120px);
+      z-index: -1;
+      opacity: 0.25;
+      animation: floatGlow 14s ease-in-out infinite alternate;
+    }
+
+    body::before {
+      background: #2cff7a;
+      top: -100px;
+      left: -100px;
+    }
+
+    body::after {
+      background: #3b82f6;
+      bottom: -120px;
+      right: -120px;
+      animation: floatGlow 18s ease-in-out infinite alternate-reverse;
+    }
+
+    @keyframes floatGlow {
+      from { transform: translateY(0px) scale(1); }
+      to { transform: translateY(40px) scale(1.1); }
+    }
+
+    h1 {
+      font-size: 70px;
+      margin-bottom: 60px;
+
+      background: linear-gradient(to right, #daffd6, #75ed69, #40c433);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      text-shadow:
+        0 0 8px rgba(55, 214, 88, 0.8),
+        0 0 18px rgba(55, 214, 88, 0.6),
+        0 0 32px rgba(55, 214, 88, 0.4);
+
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    /* CONTAINER */
+    .container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 120px;
+    }
+
+    /* SINGLE CARD */
+    .card {
+      width: 650px;
+      min-height: 300px;
+
+      padding: 40px 35px;
+
+      background: rgba(255,255,255,0.05);
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.08);
+
+      backdrop-filter: blur(14px);
+
+      text-align: center;
+
+      transition: all 0.35s ease;
+
+      opacity: 0;
+      transform: translateY(25px);
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 0 25px rgba(55, 214, 88, 0.35);
+    }
+
+    .card p {
+      font-size: 18px;
+      color: #d1d5db;
+      line-height: 1.8;
+      margin-bottom: 35px;
+    }
+
+    /* BUTTON */
+    .card a {
+      display: inline-block;
+      text-decoration: none;
+
+      background: #75ed69;
+      color: white;
+
+      padding: 14px 26px;
+      border-radius: 10px;
+
+      font-weight: bold;
+      font-size: 16px;
+
+      box-shadow: 0 0 18px rgba(55, 214, 88, 0.6);
+
+      transition: all 0.3s ease;
+    }
+
+    .card a:hover {
+      background: #57c76a;
+      box-shadow: 0 0 28px rgba(55, 214, 88, 1);
+      transform: scale(1.03);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+<nav>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="overview.html">Overview</a></li>
+    <li><a href="projects.html">Current and Past Projects</a></li>
+    <li><a href="genes.html">Genes</a></li>
+    <li><a href="considerations.html">Considerations</a></li>
+    <li><a href="futuredirections.html">Future Directions</a></li>
+    <li><a href="research.html">Research</a></li>
+  </ul>
+</nav>
+
+<h1>Research</h1>
+
+<div class="container">
+
+  <div class="card">
+    <p>
+      Check out some interesting papers (on bioluminescence) with short synopses/cool facts!
+    </p>
+
+    <a href="https://docs.google.com/document/d/1FgqPWyTRj56OVwGlZGe6800uagSLP04_dhb3rr5G20Y/edit?usp=sharing"
+       target="_blank">
+      Click to view Google Doc
+    </a>
+  </div>
+
+</div>
+
+</body>
+
+</html>
