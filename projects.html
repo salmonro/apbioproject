@@ -55,7 +55,6 @@
       to { transform: translateY(40px) scale(1.1); }
     }
 
-    /* TITLE */
     h1 {
       font-size: 70px;
       margin-bottom: 60px;
@@ -72,7 +71,6 @@
       animation: fadeInUp 0.8s ease forwards;
     }
 
-    /* GRID */
     .guides-container {
       display: flex;
       justify-content: center;
@@ -81,7 +79,6 @@
       margin-bottom: 120px;
     }
 
-    /* CARD */
     .guide-card {
       width: 600px;
       min-height: 260px;
@@ -103,7 +100,6 @@
 
       transition: all 0.35s ease;
 
-      /* FIX: prevents clipping + enables reveal */
       opacity: 0;
       transform: translateY(25px);
       animation: fadeInUp 0.8s ease forwards;
@@ -131,11 +127,13 @@
       border: 1px solid rgba(255,255,255,0.08);
 
       box-shadow: 0 0 18px rgba(55, 214, 88, 0.18);
-      transition: all 0.3s;
     }
 
-    .guide-card:hover img {
-      box-shadow: 0 0 24px rgba(55, 214, 88, 0.35);
+    .image-credit {
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      margin-top: 8px;
+      text-align: center;
     }
 
     .guide-card h2 {
@@ -163,7 +161,6 @@
       font-weight: bold;
 
       box-shadow: 0 0 15px rgba(55, 214, 88, 0.6);
-
       transition: all 0.3s;
     }
 
@@ -172,7 +169,6 @@
       box-shadow: 0 0 25px rgba(55, 214, 88, 1);
     }
 
-    /* ANIMATION */
     @keyframes fadeInUp {
       from {
         opacity: 0;
@@ -182,37 +178,6 @@
         opacity: 1;
         transform: translateY(0);
       }
-    }
-
-    /* MOBILE */
-    @media screen and (max-width:768px) {
-
-      h1 {
-        font-size: 48px;
-      }
-
-      .guides-container {
-        flex-direction: column;
-        align-items: center;
-        gap: 30px;
-      }
-
-      .guide-card {
-        flex-direction: column;
-        width: 90%;
-        text-align: center;
-      }
-
-      .guide-card img {
-        width: 100%;
-        height: 180px;
-      }
-
-      nav ul {
-        flex-direction: column;
-        gap: 15px;
-      }
-
     }
 
   </style>
@@ -249,6 +214,8 @@
       <a href="https://light.bio/?srsltid=AfmBOorNCK0HzvQUMNzmnxAu2SzDWaCtN6ujWsZsHLunSIAgh1n4mokr" target="_blank">
         View Light Bio
       </a>
+
+      <p class="image-credit">Image credit: Light Bio</p>
     </div>
 
     <img src="lightbio.webp" alt="Light Bio">
@@ -267,6 +234,8 @@
       <a href="https://news.mit.edu/2017/engineers-create-nanobionic-plants-that-glow-1213" target="_blank">
         View MIT's Project
       </a>
+
+      <p class="image-credit">Image credit: MIT</p>
     </div>
 
     <img src="glowingplant.jpg" alt="Glowing Plant">
