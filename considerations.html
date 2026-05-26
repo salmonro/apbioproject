@@ -235,8 +235,13 @@
         <h2>Metabolic burden</h2>
         <ul>
           <li>Light generation requires constant energy, so natural metabolic cycles may be disrupted</li>
-          <li>In order for plants to glow in the night, We would have to engineer ATP generating cycles to run continuously in the night even without input from glucose or other energy sources</li>
-          <li>Bioluminescence depends on enzymes and cellular energy flux</li>
+          <li>
+            In order for plants to glow in the night, We would have to engineer ATP generating cycles to run continuously in the night even without input from glucose or other energy sources
+          </li>
+          <li>
+            Bioluminescence depends on enzymes and cellular energy flux, which can hinder endogenous growth pathways
+            (<a href="https://pubmed.ncbi.nlm.nih.gov/34251679/" target="_blank">Mitiouchkina et al., 2021</a>)
+          </li>
         </ul>
       </div>
     </div>
@@ -247,9 +252,15 @@
         <span class="status green">OPTIMIZATION</span>
         <h2>Brightness levels and customization</h2>
         <ul>
-          <li>Glowing plants must emit immense amounts of lumens</li>
+          <li>
+            Glowing plants must emit immense amounts of lumens to reach brightness of street lights
+            (<a href="https://link.springer.com/chapter/10.1007/978-3-662-43619-6_1" target="_blank">Reeve et al., 2014</a>)
+          </li>
           <li>Modifying the color of the glow: a future direction</li>
-          <li>BRET-based wavelength shifting strategies</li>
+          <li>
+            Recent strategies include bioluminescence resonance energy transfer (BRET)
+            (<a href="https://pubmed.ncbi.nlm.nih.gov/35530680/" target="_blank">Tsuboi and Jin, 2019</a>)
+          </li>
         </ul>
       </div>
     </div>
@@ -260,7 +271,10 @@
         <span class="status red">ECOLOGICAL RISK</span>
         <h2>Ecological concerns</h2>
         <ul>
-          <li>Constant light emission can affect pollinators</li>
+          <li>
+            Constant light emission can affect pollinators
+            (<a href="https://pubmed.ncbi.nlm.nih.gov/29181445/" target="_blank">Knop et al., 2017</a>)
+          </li>
           <li>Need to distinguish natural vs engineered light signals</li>
         </ul>
       </div>
@@ -281,7 +295,6 @@
 
     reveals.forEach(el => observer.observe(el));
 
-    // subtle parallax (optional but matching overview feel)
     window.addEventListener('scroll', () => {
       const y = window.scrollY;
       document.body.style.backgroundPosition = `
@@ -294,5 +307,4 @@
   </script>
 
 </body>
-
 </html>
