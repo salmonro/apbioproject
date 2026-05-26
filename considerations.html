@@ -25,18 +25,20 @@
       overflow-x: hidden;
     }
 
-    /* ================= ADDED: floating ambient glow ================= */
+    /* ================= FLOATING GLOW LAYERS (NEW PARALLAX SYSTEM) ================= */
+
     body::before,
     body::after {
       content: "";
       position: fixed;
-      width: 500px;
-      height: 500px;
+      width: 520px;
+      height: 520px;
       border-radius: 50%;
-      filter: blur(120px);
+      filter: blur(130px);
       z-index: -1;
       opacity: 0.22;
-      animation: floatGlow 14s ease-in-out infinite alternate;
+      pointer-events: none;
+      transform: translate3d(0,0,0);
     }
 
     body::before {
@@ -49,24 +51,6 @@
       background: #3b82f6;
       bottom: -140px;
       right: -140px;
-      animation-delay: 3s;
-    }
-
-    @keyframes floatGlow {
-      from { transform: translateY(0px) scale(1); }
-      to { transform: translateY(45px) scale(1.1); }
-    }
-
-    /* ================= ADDED: scroll reveal ================= */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s ease;
-    }
-
-    .reveal.show {
-      opacity: 1;
-      transform: translateY(0);
     }
 
     /* TITLE */
@@ -101,14 +85,6 @@
       color: #ccc;
       font-size: 18px;
       line-height: 1.8;
-
-      /* ADDED */
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-    }
-
-    .intro-box:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 0 25px rgba(55,214,88,0.2);
     }
 
     /* GRID */
@@ -137,8 +113,7 @@
       overflow: hidden;
       text-align: left;
 
-      /* ADDED FLOAT */
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
     }
 
     .consideration-card:hover {
@@ -225,20 +200,6 @@
     .green { background: rgba(70,255,120,0.14); color: #98ffb0; }
     .red { background: rgba(255,110,110,0.14); color: #ff9d9d; }
 
-    /* MOBILE */
-
-    @media screen and (max-width:768px) {
-      h1 { font-size: 50px; }
-
-      nav ul {
-        flex-direction: column;
-        gap: 15px;
-      }
-
-      .intro-box { width: 88%; padding: 28px; }
-      .consideration-card { width: 92%; }
-    }
-
   </style>
 </head>
 
@@ -258,14 +219,14 @@
 
   <h1>Considerations</h1>
 
-  <div class="intro-box reveal">
+  <div class="intro-box">
     Engineering bioluminescent plants requires balancing gene expression, metabolic regulation, ecological interactions, and brightness optimization. 
     Here are some considerations yet to be resolved, and some solutions underway.
   </div>
 
   <div class="considerations-grid">
 
-    <div class="consideration-card species reveal">
+    <div class="consideration-card species">
       <div class="bg-symbol">🧬</div>
       <div class="card-content">
         <span class="status blue">GENETIC VARIABILITY</span>
@@ -278,7 +239,7 @@
       </div>
     </div>
 
-    <div class="consideration-card metabolic reveal">
+    <div class="consideration-card metabolic">
       <div class="bg-symbol">⚡</div>
       <div class="card-content">
         <span class="status orange">HIGH ENERGY COST</span>
@@ -291,7 +252,7 @@
       </div>
     </div>
 
-    <div class="consideration-card brightness reveal">
+    <div class="consideration-card brightness">
       <div class="bg-symbol">💡</div>
       <div class="card-content">
         <span class="status green">OPTIMIZATION</span>
@@ -304,7 +265,7 @@
       </div>
     </div>
 
-    <div class="consideration-card ecology reveal">
+    <div class="consideration-card ecology">
       <div class="bg-symbol">🌎</div>
       <div class="card-content">
         <span class="status red">ECOLOGICAL RISK</span>
@@ -319,23 +280,38 @@
   </div>
 
 <script>
-  // scroll reveal
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("show");
-      }
-    });
-  });
+  // SMOOTH PARALLAX ON GLOW LAYERS ONLY
+  let tx = 0, ty = 0;
+  let cx = 0, cy = 0;
 
-  document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
-
-  // subtle parallax
   document.addEventListener("mousemove", (e) => {
-    const x = (e.clientX / window.innerWidth - 0.5) * 10;
-    const y = (e.clientY / window.innerHeight - 0.5) * 10;
-    document.body.style.backgroundPosition = `${x}px ${y}px`;
+    tx = (e.clientX / window.innerWidth - 0.5) * 30;
+    ty = (e.clientY / window.innerHeight - 0.5) * 30;
   });
+
+  function animate() {
+    cx += (tx - cx) * 0.06;
+    cy += (ty - cy) * 0.06;
+
+    document.body.style.setProperty("--gx", cx + "px");
+    document.body.style.setProperty("--gy", cy + "px");
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+
+  // apply movement to pseudo-elements via transform trick
+  const style = document.createElement("style");
+  style.innerHTML = `
+    body::before {
+      transform: translate(calc(var(--gx) * 0.4), calc(var(--gy) * 0.4));
+    }
+    body::after {
+      transform: translate(calc(var(--gx) * -0.3), calc(var(--gy) * -0.3));
+    }
+  `;
+  document.head.appendChild(style);
 </script>
 
 </body>
