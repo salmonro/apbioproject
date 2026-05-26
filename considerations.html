@@ -21,16 +21,10 @@
 
       min-height: 100vh;
       padding-top: 0px;
-
-      background-size: 120% 120%;
-    }
-
-    /* PARALLAX BACKGROUND */
-    body {
-      transition: background-position 0.2s ease-out;
     }
 
     /* TITLE */
+
     h1 {
       font-size: 72px;
       margin-bottom: 25px;
@@ -47,6 +41,7 @@
     }
 
     /* INTRO */
+
     .intro-box {
       width: 78%;
       margin: auto auto 70px auto;
@@ -63,6 +58,7 @@
     }
 
     /* GRID */
+
     .considerations-grid {
       display: flex;
       justify-content: center;
@@ -73,6 +69,7 @@
     }
 
     /* CARDS */
+
     .consideration-card {
       position: relative;
       width: 340px;
@@ -86,18 +83,7 @@
       overflow: hidden;
 
       transition: all 0.35s;
-
       text-align: left;
-
-      /* SCROLL REVEAL */
-      opacity: 0;
-      transform: translateY(20px);
-    }
-
-    .consideration-card.active {
-      opacity: 1;
-      transform: translateY(0);
-      transition: all 0.8s ease;
     }
 
     .consideration-card:hover {
@@ -105,12 +91,25 @@
     }
 
     /* GLOW EFFECTS */
-    .species:hover { box-shadow: 0 0 30px rgba(120,200,255,0.28); }
-    .metabolic:hover { box-shadow: 0 0 30px rgba(255,180,90,0.28); }
-    .brightness:hover { box-shadow: 0 0 30px rgba(70,255,120,0.28); }
-    .ecology:hover { box-shadow: 0 0 30px rgba(255,110,110,0.28); }
+
+    .species:hover {
+      box-shadow: 0 0 30px rgba(120,200,255,0.28);
+    }
+
+    .metabolic:hover {
+      box-shadow: 0 0 30px rgba(255,180,90,0.28);
+    }
+
+    .brightness:hover {
+      box-shadow: 0 0 30px rgba(70,255,120,0.28);
+    }
+
+    .ecology:hover {
+      box-shadow: 0 0 30px rgba(255,110,110,0.28);
+    }
 
     /* BACKGROUND SYMBOLS */
+
     .bg-symbol {
       position: absolute;
       font-size: 210px;
@@ -127,6 +126,7 @@
     }
 
     /* CONTENT */
+
     .card-content {
       position: relative;
       z-index: 2;
@@ -152,6 +152,7 @@
     }
 
     /* LINKS */
+
     .card-content a {
       color: #75ed69;
       text-decoration: underline;
@@ -164,6 +165,7 @@
     }
 
     /* STATUS TAGS */
+
     .status {
       display: inline-block;
       margin-bottom: 18px;
@@ -180,8 +182,12 @@
     .red { background: rgba(255,110,110,0.14); color: #ff9d9d; }
 
     /* MOBILE */
+
     @media screen and (max-width:768px) {
-      h1 { font-size: 50px; }
+
+      h1 {
+        font-size: 50px;
+      }
 
       nav ul {
         flex-direction: column;
@@ -196,9 +202,11 @@
       .consideration-card {
         width: 92%;
       }
+
     }
 
   </style>
+
 </head>
 
 <body>
@@ -218,60 +226,64 @@
   <h1>Considerations</h1>
 
   <div class="intro-box">
-
-    Engineering bioluminescent plants requires balancing gene expression, metabolic regulation, ecological interactions, and brightness optimization. 
-    Here are some considerations yet to be resolved, and some solutions underway.
-
+    Engineering bioluminescent plants requires balancing gene expression, metabolic regulation, ecological interactions, and brightness optimization. Here are some considerations yet to be resolved, and some solutions underway.
   </div>
 
   <div class="considerations-grid">
 
     <div class="consideration-card species">
       <div class="bg-symbol">🧬</div>
-      <div class="card-content">...</div>
+      <div class="card-content">
+        <span class="status blue">GENETIC VARIABILITY</span>
+        <h2>Species-specific constraints and inter-species variability</h2>
+        <ul>
+          <li>Necessary substrates and cofactors are specific to each species</li>
+          <li>Different enzymes and proteins can lead to problems with gene expression</li>
+          <li>Some organisms cannot synthesize their own substrates (e.g. luciferin)</li>
+        </ul>
+      </div>
     </div>
 
     <div class="consideration-card metabolic">
       <div class="bg-symbol">⚡</div>
-      <div class="card-content">...</div>
+      <div class="card-content">
+        <span class="status orange">HIGH ENERGY COST</span>
+        <h2>Metabolic burden</h2>
+        <ul>
+          <li>Light generation requires constant energy, so natural metabolic cycles may be disrupted</li>
+          <li>In order for plants to glow in the night, We would have to engineer ATP generating cycles to run continuously in the night even without input from glucose or other energy sources</li>
+          <li>Bioluminescence depends on enzymes and cellular energy flux, which can hinder endogenous growth pathways (Mitiouchkina et al., 2021)</li>
+        </ul>
+      </div>
     </div>
 
     <div class="consideration-card brightness">
       <div class="bg-symbol">💡</div>
-      <div class="card-content">...</div>
+      <div class="card-content">
+        <span class="status green">OPTIMIZATION</span>
+        <h2>Brightness levels and customization</h2>
+        <ul>
+          <li>Glowing plants must emit immense amounts of lumens to reach the brightness of traditional street lights (Reeve et al., 2014)</li>
+          <li>Modifying the color of the glow: a future direction</li>
+          <li>Recent strategies include using bioluminescence resonance energy transfer (BRET) to shift wavelengths (Tsuboi and Jin, 2019)</li>
+        </ul>
+      </div>
     </div>
 
     <div class="consideration-card ecology">
       <div class="bg-symbol">🌎</div>
-      <div class="card-content">...</div>
+      <div class="card-content">
+        <span class="status red">ECOLOGICAL RISK</span>
+        <h2>Ecological concerns</h2>
+        <ul>
+          <li>Constant light emission in the night can attract pollinators and disrupt their natural feeding cycles (Knop et al., 2017)</li>
+          <li>Important to ensure that pollinators can distinguish between natural light and bioluminescence from the plants</li>
+        </ul>
+      </div>
     </div>
 
   </div>
 
-<script>
-/* SCROLL REVEAL */
-const cards = document.querySelectorAll(".consideration-card");
-
-function reveal() {
-  cards.forEach(card => {
-    const top = card.getBoundingClientRect().top;
-    if (top < window.innerHeight - 100) {
-      card.classList.add("active");
-    }
-  });
-}
-
-window.addEventListener("scroll", reveal);
-reveal();
-
-/* PARALLAX */
-document.addEventListener("mousemove", (e) => {
-  const x = (e.clientX / window.innerWidth - 0.5) * 10;
-  const y = (e.clientY / window.innerHeight - 0.5) * 10;
-
-  document.body.style.backgroundPosition = `${x}px ${y}px`;
-});
-</script>
-
 </body>
+
 </html>
