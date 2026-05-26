@@ -6,6 +6,7 @@
 html, body {
   height: 100%;
   margin: 0;
+  padding: 0;
 }
 
 body {
@@ -21,6 +22,7 @@ body {
 
 nav {
   margin-bottom: 45px;
+  margin-top: 0px;
   padding-top: 0px;
 
   /* GLASS LAYER */
@@ -74,7 +76,7 @@ nav li::after {
 nav a {
   position: relative;
 
-  color: #8fffa0; /* slightly softer neon */
+  color: white;; 
 
   font-size: 20px;
   font-weight: bold;
