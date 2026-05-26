@@ -22,7 +22,7 @@ body {
 
 nav {
   margin: 0;
-  padding: 10px 0;
+  padding: 12px 0;
 
   width: 100%;
 
@@ -37,16 +37,16 @@ nav ul {
   list-style: none;
 
   margin: 0;
-  padding: 0 14px;
+  padding: 0 20px;
 
   display: flex;
   justify-content: center;
   align-items: center;
 
-  gap: 22px;
+  gap: 25px;          
 
-  flex-wrap: nowrap;     
-  white-space: nowrap;    
+  flex-wrap: nowrap;  
+  white-space: nowrap;
 }
 
 nav li {
@@ -59,11 +59,10 @@ nav a {
   color: white;
   text-decoration: none;
 
-  font-size: 16px;        
-  font-weight: 600;
+  font-size: 20px;    
+  font-weight: bold;
 
   padding: 6px 10px;
-
   border-radius: 10px;
 
   transition: all 0.3s ease;
@@ -75,10 +74,11 @@ nav a {
 nav a:hover {
   color: #71ff6e;
 
-  background: rgba(113, 255, 110, 0.10);
+  background: rgba(113, 255, 110, 0.08);
 
   text-shadow:
-    0 0 8px rgba(113,255,110,0.5);
+    0 0 8px rgba(113,255,110,0.6),
+    0 0 16px rgba(113,255,110,0.3);
 }
 
 /* underline animation */
@@ -87,13 +87,13 @@ nav a::after {
 
   position: absolute;
   left: 50%;
-  bottom: -5px;
+  bottom: -6px;
 
   width: 0%;
   height: 2px;
 
   background: #71ff6e;
-  box-shadow: 0 0 7px #71ff6e;
+  box-shadow: 0 0 8px #71ff6e;
 
   transition: all 0.3s ease;
 
@@ -101,7 +101,7 @@ nav a::after {
 }
 
 nav a:hover::after {
-  width: 65%;
+  width: 70%;
 }
 
 /* Hero Section */
