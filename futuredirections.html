@@ -22,50 +22,6 @@
         linear-gradient(180deg, #0b0d18 0%, #05060d 100%);
     }
 
-    /* ================= PARALLAX BACKGROUND ================= */
-    body::before,
-    body::after {
-      content: "";
-      position: fixed;
-      width: 600px;
-      height: 600px;
-      border-radius: 50%;
-      filter: blur(120px);
-      z-index: -1;
-      opacity: 0.22;
-      animation: floatGlow 14s ease-in-out infinite alternate;
-    }
-
-    body::before {
-      background: #2cff7a;
-      top: -120px;
-      left: -120px;
-    }
-
-    body::after {
-      background: #3b82f6;
-      bottom: -140px;
-      right: -140px;
-      animation-delay: 3s;
-    }
-
-    @keyframes floatGlow {
-      from { transform: translateY(0px) scale(1); }
-      to { transform: translateY(45px) scale(1.1); }
-    }
-
-    /* ================= FADE-IN REVEAL ================= */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s ease;
-    }
-
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0px);
-    }
-
     /* ================= CIRCADIAN ANIMATION ================= */
 
     .sky {
@@ -104,6 +60,20 @@
       50% { left: 50%; transform: translateY(40px); }
       75% { transform: translateY(-20px); }
       100% { left: 110%; transform: translateY(20px); }
+    }
+
+    /* ================= TITLE ANIMATION (ONLY ADDITION) ================= */
+
+    .title-reveal {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+      will-change: opacity, transform;
+    }
+
+    .title-reveal.active {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     h1 {
@@ -209,11 +179,11 @@
   </ul>
 </nav>
 
-<h1 class="reveal">Future Directions</h1>
+<h1 class="title-reveal">Future Directions</h1>
 
 <div class="accordion">
 
-  <div class="item reveal">
+  <div class="item">
     <div class="header" onclick="toggle(this)">
       Thoughts on Nanobionics <span class="plus">+</span>
     </div>
@@ -224,7 +194,7 @@
     </div>
   </div>
 
-  <div class="item reveal">
+  <div class="item">
     <div class="header" onclick="toggle(this)">
       Circadian System Idea <span class="plus">+</span>
     </div>
@@ -236,7 +206,7 @@
     </div>
   </div>
 
-  <div class="item reveal">
+  <div class="item">
     <div class="header" onclick="toggle(this)">
       Circadian proteins <span class="plus">+</span>
     </div>
@@ -254,20 +224,21 @@ function toggle(el) {
   el.parentElement.classList.toggle("active");
 }
 
-/* FADE-IN SCROLL */
-const reveals = document.querySelectorAll('.reveal');
+/* FADE-IN TITLE */
+function revealTitle() {
+  const title = document.querySelector('.title-reveal');
+  if (!title) return;
 
-function revealOnScroll() {
-  for (let el of reveals) {
-    const top = el.getBoundingClientRect().top;
-    if (top < window.innerHeight - 80) {
-      el.classList.add('active');
-    }
+  const top = title.getBoundingClientRect().top;
+  const trigger = window.innerHeight * 0.85;
+
+  if (top < trigger) {
+    title.classList.add('active');
   }
 }
 
-window.addEventListener('scroll', revealOnScroll);
-revealOnScroll();
+window.addEventListener('scroll', revealTitle);
+window.addEventListener('load', revealTitle);
 </script>
 
 </body>
