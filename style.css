@@ -18,11 +18,11 @@ body {
   text-align: center;
 }
 
-/* ================= COMPACT NAVBAR ================= */
+/* ================= NAVIGATION ================= */
 
 nav {
   margin: 0;
-  padding: 6px 0;
+  padding: 10px 0;
 
   width: 100%;
 
@@ -37,18 +37,16 @@ nav ul {
   list-style: none;
 
   margin: 0;
-  padding: 0 10px;
+  padding: 0 14px;
 
   display: flex;
   justify-content: center;
   align-items: center;
 
-  gap: 16px;
+  gap: 22px;
 
-  flex-wrap: nowrap;   
-  white-space: nowrap; 
-
-  overflow-x: auto;   
+  flex-wrap: nowrap;     
+  white-space: nowrap;    
 }
 
 nav li {
@@ -61,13 +59,14 @@ nav a {
   color: white;
   text-decoration: none;
 
-  font-size: 14px;     
+  font-size: 16px;        
   font-weight: 600;
 
-  padding: 6px 8px;    
-  border-radius: 8px;
+  padding: 6px 10px;
 
-  transition: all 0.25s ease;
+  border-radius: 10px;
+
+  transition: all 0.3s ease;
 
   white-space: nowrap;
 }
@@ -75,32 +74,34 @@ nav a {
 /* hover */
 nav a:hover {
   color: #71ff6e;
-  background: rgba(113, 255, 110, 0.08);
+
+  background: rgba(113, 255, 110, 0.10);
 
   text-shadow:
     0 0 8px rgba(113,255,110,0.5);
 }
 
-/* underline */
+/* underline animation */
 nav a::after {
   content: "";
-  position: absolute;
 
+  position: absolute;
   left: 50%;
-  bottom: -4px;
+  bottom: -5px;
 
   width: 0%;
   height: 2px;
 
   background: #71ff6e;
-  box-shadow: 0 0 6px #71ff6e;
+  box-shadow: 0 0 7px #71ff6e;
 
-  transition: 0.3s;
+  transition: all 0.3s ease;
+
   transform: translateX(-50%);
 }
 
 nav a:hover::after {
-  width: 60%;
+  width: 65%;
 }
 
 /* Hero Section */
