@@ -22,6 +22,50 @@
         linear-gradient(180deg, #0b0d18 0%, #05060d 100%);
     }
 
+    /* ================= PARALLAX BACKGROUND ================= */
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      filter: blur(120px);
+      z-index: -1;
+      opacity: 0.22;
+      animation: floatGlow 14s ease-in-out infinite alternate;
+    }
+
+    body::before {
+      background: #2cff7a;
+      top: -120px;
+      left: -120px;
+    }
+
+    body::after {
+      background: #3b82f6;
+      bottom: -140px;
+      right: -140px;
+      animation-delay: 3s;
+    }
+
+    @keyframes floatGlow {
+      from { transform: translateY(0px) scale(1); }
+      to { transform: translateY(45px) scale(1.1); }
+    }
+
+    /* ================= FADE-IN REVEAL ================= */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+
     /* ================= CIRCADIAN ANIMATION ================= */
 
     .sky {
@@ -62,24 +106,21 @@
       100% { left: 110%; transform: translateY(20px); }
     }
 
-    
-
     h1 {
-  font-size: 64px;
-  margin: 25px 0;
-  text-align: center;
+      font-size: 64px;
+      margin: 25px 0;
+      text-align: center;
 
-  background: linear-gradient(to right, #daffd6, #75ed69, #40c433);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+      background: linear-gradient(to right, #daffd6, #75ed69, #40c433);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
 
-  text-shadow:
-    0 0 8px rgba(55, 214, 88, 0.8),
-    0 0 18px rgba(55, 214, 88, 0.6),
-    0 0 32px rgba(55, 214, 88, 0.4),
-    0 0 55px rgba(113, 255, 110, 0.25);
-
-}
+      text-shadow:
+        0 0 8px rgba(55, 214, 88, 0.8),
+        0 0 18px rgba(55, 214, 88, 0.6),
+        0 0 32px rgba(55, 214, 88, 0.4),
+        0 0 55px rgba(113, 255, 110, 0.25);
+    }
 
     /* ================= ACCORDION ================= */
 
@@ -168,109 +209,41 @@
   </ul>
 </nav>
 
-<h1>Future Directions</h1>
+<h1 class="reveal">Future Directions</h1>
 
 <div class="accordion">
 
-  <div class="item">
+  <div class="item reveal">
     <div class="header" onclick="toggle(this)">
       Thoughts on Nanobionics <span class="plus">+</span>
     </div>
     <div class="content">
-
--Luciferase enzymes, luciferase substrates, and cofactors are delivered to plants by encapsulating these components in silica, polymer, or other nanomaterials<br>
--Nanomaterial based approaches allow scientists to customize bioluminescent plants (color, glow duration, etc.)<br>
--Although a nanomaterial-based approach avoids some of the challenges associated with genetic modification, it requires more maintenance, material delivery, and is less automatic and long-lasting than what can be achieved through genetic engineering
-
-
+      -Luciferase enzymes, luciferase substrates, and cofactors are delivered to plants by encapsulating these components in silica, polymer, or other nanomaterials<br>
+      -Nanomaterial based approaches allow scientists to customize bioluminescent plants (color, glow duration, etc.)<br>
+      -Although a nanomaterial-based approach avoids some of the challenges associated with genetic modification, it requires more maintenance, material delivery, and is less automatic and long-lasting than what can be achieved through genetic engineering
     </div>
   </div>
 
-  <div class="item">
+  <div class="item reveal">
     <div class="header" onclick="toggle(this)">
       Circadian System Idea <span class="plus">+</span>
     </div>
     <div class="content">
-Can we utilize natural circadian rhythm systems in plants so that plants “glow” in the night and do not glow in the dark? Can luciferase be activated at certain times of the day and inactivated at others? -> light, temperature, and other conditions.<br>
--What makes an evening gene an “evening” gene and what makes a “morning” gene a morning gene?<br>
-      
--“Molecular clock” proteins can activate or inactivate some of the fluorescent proteins like luciferase<br>
-
--Specialized glands/organs that contain luciferase, oxygen, luciferin, hispidin and necessary components. Possibly in the leaves
-
+      Can we utilize natural circadian rhythm systems in plants so that plants “glow” in the night and do not glow in the dark? Can luciferase be activated at certain times of the day and inactivated at others? -> light, temperature, and other conditions.<br>
+      -What makes an evening gene an “evening” gene and what makes a “morning” gene a morning gene?<br>
+      -“Molecular clock” proteins can activate or inactivate some of the fluorescent proteins like luciferase<br>
+      -Specialized glands/organs that contain luciferase, oxygen, luciferin, hispidin and necessary components. Possibly in the leaves
     </div>
   </div>
 
-  <div class="item">
+  <div class="item reveal">
     <div class="header" onclick="toggle(this)">
       Circadian proteins <span class="plus">+</span>
     </div>
     <div class="content">
-
--ZEITLUPE (ZTL): Blue-light photoreceptor proteins that regulate the circadian clock and flowering. Synchronizes plant internal biological clocks with outside signals and day-night cycle<br>
-
--CCA1, LHY, TOC1. CCA1 and LHY are transcription factors for morning genes. TOC1 is a transcription repressor that peaks in the evening (<a href="https://www.science.org/doi/10.1126/science.1061320" target="_blank">Millar & Kay, 2000</a>)<br>
-
--The DET1 protein in Arabidopsis may also play a role in regulating plant circadian systems by repressing “evening” genes such as CCA1/LHY. Basically, DET1 binds to transcriptional regulators including COP10 and DDB1 to form a transcriptional co-repressor complex and repress expression of transcription inhibitors (like TOC1) which then subsequently suppresses expression of CCA1. Turns evening genes off in the morning  (<a href="https://www.cell.com/molecular-cell/fulltext/S1097-2765(11)00536-3" target="_blank">Dong et al., 2011</a>)
-
-    </div>
-  </div>
-
-  <div class="item">
-    <div class="header" onclick="toggle(this)">
-      Circadian System Figures <span class="plus">+</span>
-    </div>
-    <div class="content">
-TBD
-    </div>
-  </div>
-
-  <div class="item">
-    <div class="header" onclick="toggle(this)">
-      Ions <span class="plus">+</span>
-    </div>
-    <div class="content">
-
-Can we use ions to control these fluorescent genes<br>
-
--“Nutrient ions regulate circadian clock signaling” (<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10181312/" target="_blank">Sanchez et al., 2023</a>)<br>
-
--Mg2+ controls carbon fixation rhythms (<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10181312/" target="_blank">Sanchez et al., 2023</a>)<br>
-
--Luciferase requires Mg2+ for ATP-dependent activation (<a href="https://www.sciencedirect.com/topics/medicine-and-dentistry/firefly-luciferase" target="_blank">Wilson et al., 2019</a>)<br>
-
-    </div>
-  </div>
-
-  <div class="item">
-    <div class="header" onclick="toggle(this)">
-      Temperature & circadian rhythm <span class="plus">+</span>
-    </div>
-    <div class="content">
-What role does temperature play in entraining the circadian rhythm?
-Circadian genes interact with temperature signals (<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10181312/" target="_blank">Sanchez et al., 2023</a>)<br>
-
-ELF3 acts as a thermosensor linked to fluorescent speckling (<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10181312/" target="_blank">Sanchez et al., 2023</a>)<br>
-
-Histone modification regulates circadian genes (<a href="https://link.springer.com/article/10.1186/s13059-019-1777-1" target="_blank">Huang et al., 2019</a>)<br>
-
-    </div>
-  </div>
-
-  <div class="item">
-    <div class="header" onclick="toggle(this)">
-      Engineering & promoters <span class="plus">+</span>
-    </div>
-    <div class="content">
-
-Can we engineer transcription factors for circadian regulation?
-
-Circadian promoters like CCA1 or TOC1 regulate rhythmic expression (<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3189347/" target="_blank">Harmer et al., 2009</a>)<br>
-
-LUX binding sites enable circadian repression (<a href="https://www.nature.com/articles/s41467-019-10485-6" target="_blank">Greenwood et al., 2019</a>)<br>
-
-CCA1/LHY act as morning activators, TOC1/PRR as evening repressors
-
+      -ZEITLUPE (ZTL): Blue-light photoreceptor proteins that regulate the circadian clock and flowering. Synchronizes plant internal biological clocks with outside signals and day-night cycle<br><br>
+      -CCA1, LHY, TOC1. CCA1 and LHY are transcription factors for morning genes. TOC1 is a transcription repressor that peaks in the evening<br><br>
+      -The DET1 protein in Arabidopsis may also play a role in regulating plant circadian systems by repressing “evening” genes
     </div>
   </div>
 
@@ -280,6 +253,21 @@ CCA1/LHY act as morning activators, TOC1/PRR as evening repressors
 function toggle(el) {
   el.parentElement.classList.toggle("active");
 }
+
+/* FADE-IN SCROLL */
+const reveals = document.querySelectorAll('.reveal');
+
+function revealOnScroll() {
+  for (let el of reveals) {
+    const top = el.getBoundingClientRect().top;
+    if (top < window.innerHeight - 80) {
+      el.classList.add('active');
+    }
+  }
+}
+
+window.addEventListener('scroll', revealOnScroll);
+revealOnScroll();
 </script>
 
 </body>
