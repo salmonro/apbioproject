@@ -23,7 +23,17 @@
       padding-top: 0px;
     }
 
-   
+    /* ===== SCROLL REVEAL (ADDED ONLY) ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: all 0.8s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
     /* Title */
     h1 {
@@ -78,16 +88,12 @@
       flex: 1;
     }
 
-    /* Image on right side */
     .guide-card img {
       width: 220px;
       height: 160px;
       object-fit: cover;
 
       border-radius: 10px;
-
-      margin-bottom: 0;
-
       border: 1px solid rgba(255,255,255,0.08);
 
       box-shadow: 0 0 18px rgba(55, 214, 88, 0.18);
@@ -112,7 +118,6 @@
       margin-bottom: 22px;
     }
 
-    /* Button */
     .guide-card a {
       display: inline-block;
       text-decoration: none;
@@ -134,7 +139,6 @@
       box-shadow: 0 0 25px rgba(55, 214, 88, 1);
     }
 
-    /* Mobile */
     @media screen and (max-width:768px) {
 
       h1 {
@@ -175,19 +179,19 @@
   <ul>
      <li><a href="index.html">Home</a></li>
     <li><a href="overview.html">Overview</a></li>
-      <li><a href="projects.html">Current and Past Projects</a></li>
-      <li><a href="genes.html">Genes</a></li>
-      <li><a href="considerations.html">Considerations</a></li>
-      <li><a href="futuredirections.html">Future Directions</a></li>
-      <li><a href="research.html">Research</a></li>
+    <li><a href="projects.html">Current and Past Projects</a></li>
+    <li><a href="genes.html">Genes</a></li>
+    <li><a href="considerations.html">Considerations</a></li>
+    <li><a href="futuredirections.html">Future Directions</a></li>
+    <li><a href="research.html">Research</a></li>
   </ul>
 </nav>
 
-<h1>Current and Past Projects</h1>
+<h1 class="reveal">Current and Past Projects</h1>
 
 <div class="guides-container">
 
-  <div class="guide-card">
+  <div class="guide-card reveal">
 
     <div class="card-content">
       <h2>Light Bio</h2>
@@ -204,12 +208,12 @@
     <img src="lightbio.webp" alt="Light Bio">
 
     <p class="image-credit">
-    Image credit: Light Bio
-  </p>
+      Image credit: Light Bio
+    </p>
 
   </div>
 
-  <div class="guide-card">
+  <div class="guide-card reveal">
 
     <div class="card-content">
       <h2>MIT Nanobionic Plants</h2>
@@ -226,13 +230,28 @@
     <img src="glowingplant.jpg" alt="Glowing Plant">
 
     <p class="image-credit">
-    Image credit: MIT
-  </p>
+      Image credit: MIT
+    </p>
 
   </div>
 
 </div>
 
-</body>
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("active");
+      }
+    });
+  }, {
+    threshold: 0.15
+  });
 
+  document.querySelectorAll(".reveal").forEach(el => {
+    observer.observe(el);
+  });
+</script>
+
+</body>
 </html>
