@@ -214,6 +214,128 @@ nav a:hover::after {
   color: #71ff6e;
 }
 
+/* DARK FOREST */
+
+.forest {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+  height: 320px;
+
+  z-index: 0;
+
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.tree {
+  position: absolute;
+  bottom: -40px;
+
+  width: 0;
+  height: 0;
+
+  border-left: 70px solid transparent;
+  border-right: 70px solid transparent;
+  border-bottom: 220px solid rgba(0,0,0,0.92);
+
+  opacity: 0;
+
+  animation:
+    riseUp 2s forwards,
+    sway 5s ease-in-out infinite;
+
+  filter:
+    drop-shadow(0 0 14px rgba(70,255,120,0.08));
+}
+
+/* tree trunks */
+
+.tree::after {
+  content: "";
+
+  position: absolute;
+
+  left: -12px;
+  top: 220px;
+
+  width: 24px;
+  height: 90px;
+
+  background: rgba(0,0,0,0.92);
+}
+
+/* positions */
+
+.t1 {
+  left: -2%;
+  animation-delay: 0s;
+}
+
+.t2 {
+  left: 10%;
+  animation-delay: 0.2s;
+}
+
+.t3 {
+  left: 24%;
+  animation-delay: 0.4s;
+}
+
+.t4 {
+  left: 40%;
+  animation-delay: 0.6s;
+}
+
+.t5 {
+  left: 57%;
+  animation-delay: 0.8s;
+}
+
+.t6 {
+  left: 73%;
+  animation-delay: 1s;
+}
+
+.t7 {
+  left: 88%;
+  animation-delay: 1.2s;
+}
+
+/* animations */
+
+@keyframes riseUp {
+
+  0% {
+    transform: translateY(240px) scale(0.85);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0px) scale(1);
+    opacity: 0.9;
+  }
+
+}
+
+@keyframes sway {
+
+  0% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(1deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+
+}
+
 /* title glow animation */
 @keyframes titleGlow {
   0% {
