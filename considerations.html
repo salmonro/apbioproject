@@ -21,10 +21,16 @@
 
       min-height: 100vh;
       padding-top: 0px;
+
+      background-size: 120% 120%;
+    }
+
+    /* PARALLAX BACKGROUND */
+    body {
+      transition: background-position 0.2s ease-out;
     }
 
     /* TITLE */
-
     h1 {
       font-size: 72px;
       margin-bottom: 25px;
@@ -41,66 +47,57 @@
     }
 
     /* INTRO */
-
     .intro-box {
       width: 78%;
-
       margin: auto auto 70px auto;
-
       padding: 35px;
 
       background: rgba(255,255,255,0.05);
-
       border-radius: 18px;
-
       border: 1px solid rgba(255,255,255,0.08);
-
       backdrop-filter: blur(14px);
 
       color: #ccc;
-
       font-size: 18px;
-
       line-height: 1.8;
     }
 
     /* GRID */
-
     .considerations-grid {
       display: flex;
-
       justify-content: center;
-
       flex-wrap: wrap;
-
       gap: 38px;
-
       width: 92%;
-
       margin: auto auto 120px auto;
     }
 
     /* CARDS */
-
     .consideration-card {
       position: relative;
-
       width: 340px;
       min-height: 420px;
 
       background: rgba(255,255,255,0.04);
-
       border-radius: 22px;
-
       border: 1px solid rgba(255,255,255,0.08);
 
       backdrop-filter: blur(14px);
-
       overflow: hidden;
 
       transition: all 0.35s;
 
       text-align: left;
+
+      /* SCROLL REVEAL */
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .consideration-card.active {
+      opacity: 1;
+      transform: translateY(0);
+      transition: all 0.8s ease;
     }
 
     .consideration-card:hover {
@@ -108,41 +105,19 @@
     }
 
     /* GLOW EFFECTS */
-
-    .species:hover {
-      box-shadow:
-        0 0 30px rgba(120,200,255,0.28);
-    }
-
-    .metabolic:hover {
-      box-shadow:
-        0 0 30px rgba(255,180,90,0.28);
-    }
-
-    .brightness:hover {
-      box-shadow:
-        0 0 30px rgba(70,255,120,0.28);
-    }
-
-    .ecology:hover {
-      box-shadow:
-        0 0 30px rgba(255,110,110,0.28);
-    }
+    .species:hover { box-shadow: 0 0 30px rgba(120,200,255,0.28); }
+    .metabolic:hover { box-shadow: 0 0 30px rgba(255,180,90,0.28); }
+    .brightness:hover { box-shadow: 0 0 30px rgba(70,255,120,0.28); }
+    .ecology:hover { box-shadow: 0 0 30px rgba(255,110,110,0.28); }
 
     /* BACKGROUND SYMBOLS */
-
     .bg-symbol {
       position: absolute;
-
       font-size: 210px;
-
       right: -10px;
       bottom: -30px;
-
       opacity: 0.05;
-
       transition: all 0.35s;
-
       user-select: none;
     }
 
@@ -152,22 +127,16 @@
     }
 
     /* CONTENT */
-
     .card-content {
       position: relative;
-
       z-index: 2;
-
       padding: 30px;
     }
 
     .card-content h2 {
       color: white;
-
       font-size: 30px;
-
       line-height: 1.2;
-
       margin-bottom: 18px;
     }
 
@@ -177,76 +146,42 @@
 
     .card-content li {
       color: #ddd;
-
       font-size: 15px;
-
       line-height: 1.8;
-
       margin-bottom: 16px;
     }
 
     /* LINKS */
-
     .card-content a {
       color: #75ed69;
-
       text-decoration: underline;
-
       transition: all 0.3s;
     }
 
     .card-content a:hover {
       color: #b8ffb1;
-
-      text-shadow:
-        0 0 10px rgba(100,255,120,0.8);
+      text-shadow: 0 0 10px rgba(100,255,120,0.8);
     }
 
     /* STATUS TAGS */
-
     .status {
       display: inline-block;
-
       margin-bottom: 18px;
-
       padding: 8px 14px;
-
       border-radius: 999px;
-
       font-size: 12px;
-
       font-weight: bold;
-
       letter-spacing: 1px;
     }
 
-    .blue {
-      background: rgba(120,200,255,0.14);
-      color: #9dd8ff;
-    }
-
-    .orange {
-      background: rgba(255,180,90,0.14);
-      color: #ffd18d;
-    }
-
-    .green {
-      background: rgba(70,255,120,0.14);
-      color: #98ffb0;
-    }
-
-    .red {
-      background: rgba(255,110,110,0.14);
-      color: #ff9d9d;
-    }
+    .blue { background: rgba(120,200,255,0.14); color: #9dd8ff; }
+    .orange { background: rgba(255,180,90,0.14); color: #ffd18d; }
+    .green { background: rgba(70,255,120,0.14); color: #98ffb0; }
+    .red { background: rgba(255,110,110,0.14); color: #ff9d9d; }
 
     /* MOBILE */
-
     @media screen and (max-width:768px) {
-
-      h1 {
-        font-size: 50px;
-      }
+      h1 { font-size: 50px; }
 
       nav ul {
         flex-direction: column;
@@ -261,11 +196,9 @@
       .consideration-card {
         width: 92%;
       }
-
     }
 
   </style>
-
 </head>
 
 <body>
@@ -293,144 +226,52 @@
 
   <div class="considerations-grid">
 
-    <!-- CARD 1 -->
-
     <div class="consideration-card species">
-
       <div class="bg-symbol">🧬</div>
-
-      <div class="card-content">
-
-        <span class="status blue">GENETIC VARIABILITY</span>
-
-        <h2>Species-specific constraints and inter-species variability</h2>
-
-        <ul>
-
-          <li>
-            Necessary substrates and cofactors are specific to each species
-          </li>
-
-          <li>
-            Different enzymes and proteins can lead to problems with gene expression
-          </li>
-
-          <li>
-            Some organisms cannot synthesize their own substrates (e.g. luciferin)
-          </li>
-
-        </ul>
-
-      </div>
-
+      <div class="card-content">...</div>
     </div>
-
-    <!-- CARD 2 -->
 
     <div class="consideration-card metabolic">
-
       <div class="bg-symbol">⚡</div>
-
-      <div class="card-content">
-
-        <span class="status orange">HIGH ENERGY COST</span>
-
-        <h2>Metabolic burden</h2>
-
-        <ul>
-
-          <li>
-            Light generation requires constant energy, so natural metabolic cycles may be disrupted
-          </li>
-
-          <li>
-            In order for plants to glow in the night, We would have to engineer ATP generating cycles to run continuously in the night even without input from glucose or other energy sources
-          </li>
-
-          <li>
-            Bioluminescence depends on enzymes and and cellular energy flux, which can hinder endogenous growth pathways (
-            <a href="https://pubmed.ncbi.nlm.nih.gov/34251679/" target="_blank">
-              Mitiouchkina et al., 2021
-            </a>)
-          </li>
-
-        </ul>
-
-      </div>
-
+      <div class="card-content">...</div>
     </div>
-
-    <!-- CARD 3 -->
 
     <div class="consideration-card brightness">
-
       <div class="bg-symbol">💡</div>
-
-      <div class="card-content">
-
-        <span class="status green">OPTIMIZATION</span>
-
-        <h2>Brightness levels and customization</h2>
-
-        <ul>
-
-          <li>
-            Glowing plants must emit immense amounts of lumens to reach the brightness of traditional street lights (
-            <a href="https://link.springer.com/chapter/10.1007/978-3-662-43619-6_1" target="_blank">
-              Reeve et al., 2014
-            </a>)
-          </li>
-
-          <li>
-            Modifying the color of the glow: a future direction
-          </li>
-
-          <li>
-            Recent strategies include using bioluminescence resonance energy transfer (BRET) to shift the wavelengths of emissions (
-            <a href="https://pubmed.ncbi.nlm.nih.gov/35530680/" target="_blank">
-              Tsuboi and Jin, 2019
-            </a>)
-          </li>
-
-        </ul>
-
-      </div>
-
+      <div class="card-content">...</div>
     </div>
 
-    <!-- CARD 4 -->
-
     <div class="consideration-card ecology">
-
       <div class="bg-symbol">🌎</div>
-
-      <div class="card-content">
-
-        <span class="status red">ECOLOGICAL RISK</span>
-
-        <h2>Ecological concerns</h2>
-
-        <ul>
-
-          <li>
-            Constant light emission in the night can attract pollinators and disrupt their natural feeding cycles (
-            <a href="https://pubmed.ncbi.nlm.nih.gov/29181445/" target="_blank">
-              Knop et al., 2017
-            </a>)
-          </li>
-
-          <li>
-            Important to ensure that pollinators can distinguish between natural light and bioluminescence from the plants
-          </li>
-
-        </ul>
-
-      </div>
-
+      <div class="card-content">...</div>
     </div>
 
   </div>
 
-</body>
+<script>
+/* SCROLL REVEAL */
+const cards = document.querySelectorAll(".consideration-card");
 
+function reveal() {
+  cards.forEach(card => {
+    const top = card.getBoundingClientRect().top;
+    if (top < window.innerHeight - 100) {
+      card.classList.add("active");
+    }
+  });
+}
+
+window.addEventListener("scroll", reveal);
+reveal();
+
+/* PARALLAX */
+document.addEventListener("mousemove", (e) => {
+  const x = (e.clientX / window.innerWidth - 0.5) * 10;
+  const y = (e.clientY / window.innerHeight - 0.5) * 10;
+
+  document.body.style.backgroundPosition = `${x}px ${y}px`;
+});
+</script>
+
+</body>
 </html>
