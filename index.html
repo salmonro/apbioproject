@@ -87,126 +87,135 @@
 
     /* DARK FOREST */
 
-    .forest {
-      position: fixed;
+.forest {
+  position: fixed;
 
-      bottom: -5px;
-      left: 0;
+  bottom: 0;
+  left: 0;
 
-      width: 100%;
-      height: 340px;
+  width: 100%;
+  height: 100vh;
 
-      z-index: 1;
+  z-index: 2;
 
-      pointer-events: none;
-      overflow: hidden;
-    }
+  pointer-events: none;
+  overflow: hidden;
+}
 
-    .tree {
-      position: absolute;
+.tree {
+  position: absolute;
 
-      bottom: 0;
+  bottom: -40px;
 
-      opacity: 0;
+  opacity: 0;
 
-      object-fit: contain;
+  object-fit: contain;
 
-      height: auto;
+  display: block;
 
-      filter:
-        brightness(0)
-        drop-shadow(0 0 16px rgba(70,255,120,0.08));
+  transform-origin: bottom center;
 
-      animation:
-        riseUp 2s forwards,
-        sway 5s ease-in-out infinite;
-    }
+  filter:
+    brightness(0)
+    drop-shadow(0 0 16px rgba(70,255,120,0.08));
 
-    /* TREE POSITIONS */
+  animation:
+    riseUp 1.8s forwards,
+    sway 5s ease-in-out infinite;
+}
 
-    .t1 {
-      left: -2%;
-      width: 220px;
-      animation-delay: 0s;
-    }
+/* TREE POSITIONS */
 
-    .t2 {
-      left: 10%;
-      width: 300px;
-      animation-delay: 0.2s;
-    }
+.t1 {
+  left: -2%;
+  width: 220px;
+  animation-delay: 0s;
+}
 
-    .t3 {
-      left: 23%;
-      width: 240px;
-      animation-delay: 0.4s;
-    }
+.t2 {
+  left: 10%;
+  width: 300px;
+  animation-delay: 0.2s;
+}
 
-    .t4 {
-      left: 38%;
-      width: 340px;
-      animation-delay: 0.6s;
-    }
+.t3 {
+  left: 23%;
+  width: 240px;
+  animation-delay: 0.4s;
+}
 
-    .t5 {
-      left: 56%;
-      width: 250px;
-      animation-delay: 0.8s;
-    }
+.t4 {
+  left: 38%;
+  width: 340px;
+  animation-delay: 0.6s;
+}
 
-    .t6 {
-      left: 72%;
-      width: 320px;
-      animation-delay: 1s;
-    }
+.t5 {
+  left: 56%;
+  width: 250px;
+  animation-delay: 0.8s;
+}
 
-    .t7 {
-      left: 88%;
-      width: 230px;
-      animation-delay: 1.2s;
-    }
+.t6 {
+  left: 72%;
+  width: 320px;
+  animation-delay: 1s;
+}
 
-    /* TREE ANIMATIONS */
+.t7 {
+  left: 88%;
+  width: 230px;
+  animation-delay: 1.2s;
+}
 
-    @keyframes riseUp {
+/* TREE ANIMATIONS */
 
-      0% {
-        transform: translateY(120px) scale(0.92);
-        opacity: 0;
-      }
+@keyframes riseUp {
 
-      100% {
-        transform: translateY(0px) scale(1);
-        opacity: 0.88;
-      }
+  0% {
+    opacity: 0;
 
-    }
+    transform:
+      translateY(60px)
+      scale(0.96);
+  }
 
-    @keyframes sway {
+  100% {
+    opacity: 0.88;
 
-      0% {
-        transform: rotate(0deg);
-      }
+    transform:
+      translateY(0px)
+      scale(1);
+  }
 
-      50% {
-        transform: rotate(1deg);
-      }
+}
 
-      100% {
-        transform: rotate(0deg);
-      }
+@keyframes sway {
 
-    }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(1deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+
+}
+
 
     /* HERO */
 
-    .hero {
-      margin-top: 40px;
-      margin-bottom: 70px;
+.hero {
+  margin-top: 40px;
+  margin-bottom: 70px;
 
-      position: relative;
-      z-index: 5;
-    }
+  position: relative;
+  z-index: 10;
+}
 
     h1 {
       font-size: 82px;
@@ -289,25 +298,26 @@
         0 0 20px rgba(46,230,50,0.45);
     }
 
+
     /* FEATURE SECTION */
 
-    .features {
-      display: flex;
-      justify-content: center;
-      gap: 38px;
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 38px;
 
-      flex-wrap: wrap;
+  flex-wrap: wrap;
 
-      width: 92%;
-      max-width: 1300px;
+  width: 92%;
+  max-width: 1300px;
 
-      margin:
-        0 auto
-        120px auto;
+  margin:
+    0 auto
+    120px auto;
 
-      position: relative;
-      z-index: 5;
-    }
+  position: relative;
+  z-index: 10;
+}
 
     /* CARDS */
 
