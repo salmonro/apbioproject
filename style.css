@@ -17,16 +17,23 @@ body {
   text-align: center;
 }
 
-/* ================= NAVIGATION ================= */
+/* ================= NAVIGATION (GLASS + NEON HYBRID) ================= */
 
 nav {
   margin-bottom: 45px;
   padding-top: 10px;
+
+  /* GLASS LAYER */
+  background: rgba(10, 12, 20, 0.35);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
 nav ul {
   list-style: none;
-  padding: 0;
+  padding: 14px 0;
 
   display: flex;
   justify-content: center;
@@ -34,12 +41,11 @@ nav ul {
 
   flex-wrap: wrap;
 
-  border-bottom: 2px solid rgba(255,255,255,0.18);
-
-  padding-bottom: 14px;
-
   width: 90%;
   margin: auto;
+
+  /* subtle glass depth */
+  border-radius: 14px;
 }
 
 nav li {
@@ -47,53 +53,56 @@ nav li {
   padding: 0 8px;
 }
 
+/* soft background glow strip behind nav items */
 nav li::after {
   content: '';
 
   position: absolute;
-
   bottom: -14px;
   left: 0;
 
   width: 100%;
   height: 2px;
 
-  background: rgba(113,255,110,0.55);
-
+  background: rgba(113,255,110,0.25);
   border-radius: 2px;
 
-  opacity: 0.5;
+  opacity: 0.6;
 }
 
+/* LINKS */
 nav a {
   position: relative;
 
-  color: #57c76a;
+  color: #8fffa0; /* slightly softer neon */
 
   font-size: 20px;
+  font-weight: bold;
 
   text-decoration: none;
 
-  font-weight: bold;
-
   transition: all 0.3s ease;
+
+  padding: 6px 10px;
+  border-radius: 10px;
 }
 
+/* GLASS HOVER STATE */
 nav a:hover {
   color: #71ff6e;
 
+  background: rgba(113, 255, 110, 0.08);
+
   text-shadow:
-    0 0 8px rgba(113,255,110,0.7),
-    0 0 18px rgba(113,255,110,0.35);
+    0 0 8px rgba(113,255,110,0.6),
+    0 0 16px rgba(113,255,110,0.3);
 }
 
-/* glowing underline animation */
-
+/* animated glow underline */
 nav a::after {
   content: "";
 
   position: absolute;
-
   left: 50%;
   bottom: -6px;
 
@@ -101,29 +110,10 @@ nav a::after {
   height: 2px;
 
   background: #71ff6e;
-
   box-shadow: 0 0 8px #71ff6e;
 
   transition: all 0.3s ease;
 
-  transform: translateX(-50%);
-}
-
-nav a:hover::after {
-  width: 75%;
-}
-
-/* glowing hover underline */
-nav a::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -6px;
-  width: 0%;
-  height: 2px;
-  background: #71ff6e;
-  box-shadow: 0 0 6px #71ff6e;
-  transition: all 0.3s ease;
   transform: translateX(-50%);
 }
 
